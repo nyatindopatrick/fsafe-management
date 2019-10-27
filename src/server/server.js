@@ -4,12 +4,12 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 const app = express();
 
-const db = process.env.DB_KEY;
+// const db = process.env.DB_KEY;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 mongoose
-  .connect(db, {
+  .connect(process.env.DB_KEY, {
     useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true
