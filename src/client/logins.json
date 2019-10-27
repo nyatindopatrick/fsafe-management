@@ -1,0 +1,17 @@
+[
+    {
+        "email": "nyatindopatrick@gmail.com",
+        "role": "admin",
+        "password": "lakefire"
+    },
+    {
+        "email": "patrickotieno39@gmail.com",
+        "role": "sacco",
+        "password": "lakefire"
+    },
+    {
+        "email": "patrickotieno39@yahoo.com",
+        "role": "riders",
+        "password": "lakefire"
+    }
+]

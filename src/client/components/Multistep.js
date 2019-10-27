@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import useSignUpForm from './customHooks';
+import {useSignUpForm }from './customHooks';
 
 const MasterForm = () => {
 	let [currentStep, setCurrent] = useState(1);

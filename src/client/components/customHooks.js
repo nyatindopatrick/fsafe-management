@@ -2,23 +2,23 @@
 // eslint-disable-next-line quotes
 import { useState } from "react";
 
-const useForm = callback => {
+export const useSignUpForm = callback => {
   const [inputs, setInputs] = useState({});
 
   // handles the data upon submit
-  const handleSubmit = event => {
-    if (event) {
-      event.preventDefault();
+  const handleSubmit = e => {
+    if (e) {
+      e.preventDefault();
     }
     callback();
   };
 
   // handles the change in the form inputs
-  const handleInputChange = event => {
-    event.persist();
+  const handleInputChange = e => {
+    e.persist();
     setInputs(input => ({
       ...input,
-      [event.target.name]: event.target.value
+      [e.target.name]: e.target.value
     }));
   };
   return {
@@ -28,4 +28,8 @@ const useForm = callback => {
   };
 };
 
-export default useForm;
+export const fetchProduct = async (url, setInit) => {
+  const response = await fetch(url);
+  const json = await response.json();
+  setInit(json);
+};
