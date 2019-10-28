@@ -5,6 +5,7 @@ import { rolesConfig } from '../config/roles';
 import * as Routes from './index';
 import Navigation from '../components/Navigation';
 import NotFound from '../components/NotFound';
+import Sidebar from '../components/Sidebar';
 
 const PrivateRoutes = (props) => {
 	const [allowedRoutes, setAllowed] = useState([]);
@@ -29,6 +30,7 @@ const PrivateRoutes = (props) => {
 	return (
 		<>
 			<Navigation routes={allowedRoutes} path={props.match.path} />
+			<Sidebar />
 			<Switch>
 				{allowedRoutes.map((route) => (
 					<Route

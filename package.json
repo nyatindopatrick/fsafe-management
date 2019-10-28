@@ -5,7 +5,7 @@
   "main": "src/server/index.js",
   "scripts": {
     "build": "webpack --mode production",
-    "start": "npm run build && node src/server/server.js",
+    "start": "npm run build netlify-lambda build express",
     "client": "webpack-dev-server --mode development --devtool inline-source-map --hot",
     "server": "nodemon src/server/server.js",
     "dev": "concurrently \"npm run server\" \"npm run client\""
@@ -38,6 +38,7 @@
     "html-webpack-plugin": "^3.2.0",
     "lodash": "^4.17.15",
     "mongoose": "^5.7.4",
+    "netlify-lambda": "^1.6.3",
     "nodemon": "^1.17.3",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
