@@ -1,53 +1,27 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   return (
-    <div class="sidebar">
-    <nav class="sidebar-nav">
-      <ul class="nav">
-        <li class="nav-title">Nav Title</li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="nav-icon cui-speedometer"></i> Nav item
-          </a>
+    <div className="_sidebar">
+      <ul className="sidebar">
+        <li>
+          <Link to="/dashboard">Dashboard</Link>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="nav-icon cui-speedometer"></i> With badge
-            <span class="badge badge-primary">NEW</span>
-          </a>
+        <li>
+          <Link to="/sacco">Sacco</Link>
         </li>
-        <li class="nav-item nav-dropdown">
-          <a class="nav-link nav-dropdown-toggle" href="#">
-            <i class="nav-icon cui-puzzle"></i> Nav dropdown
-          </a>
-          <ul class="nav-dropdown-items">
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <i class="nav-icon cui-puzzle"></i> Nav dropdown item
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <i class="nav-icon cui-puzzle"></i> Nav dropdown item
-              </a>
-            </li>
-          </ul>
+        <li>
+          <Link to="/riders">Riders</Link>
         </li>
-        <li class="nav-item mt-auto">
-          <a class="nav-link nav-link-success" href="https://coreui.io">
-            <i class="nav-icon cui-cloud-download"></i> Download CoreUI</a>
+        <li>
+          <Link to="/messages">Messages</Link>
         </li>
-        <li class="nav-item">
-          <a class="nav-link nav-link-danger" href="https://coreui.io/pro/">
-            <i class="nav-icon cui-layers"></i> Try CoreUI
-            <strong>PRO</strong>
-          </a>
+        <li>
+          <Link to="/settings">Settings</Link>
         </li>
       </ul>
-    </nav>
-    <button class="sidebar-minimizer brand-minimizer" type="button"></button>
-  </div>
+    </div>
   );
 };
 
