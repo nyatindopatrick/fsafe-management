@@ -1,26 +1,20 @@
 import React from "react";
+import '@fortawesome/fontawesome-free'
 import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   return (
-    <div className="_sidebar">
-      <ul className="sidebar">
-        <li>
-          <Link to="/dashboard">Dashboard</Link>
-        </li>
-        <li>
-          <Link to="/sacco">Sacco</Link>
-        </li>
-        <li>
-          <Link to="/riders">Riders</Link>
-        </li>
-        <li>
-          <Link to="/messages">Messages</Link>
-        </li>
-        <li>
-          <Link to="/settings">Settings</Link>
-        </li>
-      </ul>
+    <div className="wrapper">
+    <div className="sidebar">
+        <h2>Fika Safe</h2>
+        <ul>
+            <li><a href="#"><i className="fas fa-chart-bar"></i>Dashboard</a></li>
+            <li><a href="#"><i className="fas fa-users"></i>Sacco</a></li>
+            <li><a href="#"><i className="fas fa-user"></i>Riders</a></li>
+            <li><a href="#"><i className="fas fa-envelope"></i>Messages</a></li>
+        </ul> 
+
+    </div>
     </div>
   );
 };

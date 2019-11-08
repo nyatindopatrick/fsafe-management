@@ -3,9 +3,9 @@ import { Switch, Route } from "react-router-dom";
 import { uniqBy } from "lodash";
 import { rolesConfig } from "../config/roles";
 import * as Routes from "./index";
-import Navigation from "../components/Navigation";
+import Navigation from "../components/header/Header";
 import NotFound from "../components/NotFound";
-import Sidebar from '../components/Sidebar'
+import Sidebar from '../components/sidebar/Sidebar'
 
 const PrivateRoutes = props => {
   const [allowedRoutes, setAllowed] = useState([]);
@@ -28,9 +28,9 @@ const PrivateRoutes = props => {
   }, [props.history]);
 
   return (
-    <div className="grid-container">
+    <div>
+     <Sidebar />
       <Navigation routes={allowedRoutes} path={props.match.path} />
-      <Sidebar />
       <Switch>
         {allowedRoutes.map(route => (
           <Route

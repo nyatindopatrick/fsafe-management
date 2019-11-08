@@ -1,7 +1,5 @@
 import React from "react";
-import { Navbar, Nav, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
 import history from "../util/history";
 
 const Navigation = props => {
