@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import history from "../util/history";
-import { fetchProduct, useSignUpForm } from "./customHooks";
+import history from "../../util/history";
+import { fetchProduct, useSignUpForm } from "../customHooks";
 
 const Login = () => {
   const { inputs, handleInputChange, handleSubmit } = useSignUpForm(

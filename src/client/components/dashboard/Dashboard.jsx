@@ -2,7 +2,7 @@ import React from 'react';
 
 function Dashboard() {
   return (
-    <div className="grid-container">
+    <>
       <div className="menu-icon">
         <i className="fas fa-bars header__menu" />
       </div>
@@ -39,7 +39,7 @@ function Dashboard() {
         <div className="footer__copyright">© 2019</div>
         <div className="footer__signature">Fika Safe</div>
       </footer>
-    </div>
+    </>
   );
 }
 

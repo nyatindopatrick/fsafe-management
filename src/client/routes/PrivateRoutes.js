@@ -28,7 +28,7 @@ const PrivateRoutes = props => {
   }, [props.history]);
 
   return (
-    <div>
+    <div className="grid-container">
      <Sidebar />
       <Navigation routes={allowedRoutes} path={props.match.path} />
       <Switch>

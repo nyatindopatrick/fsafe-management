@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
 import JumbotronWrapper from '../components/JumbotronWrapper';
-import Login from '../components/Login';
+import Login from '../components/Login/Login';
 import NotFound from '../components/NotFound';
 
 const Register = () => (

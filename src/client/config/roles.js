@@ -16,7 +16,7 @@ const components = {
 	},
 	dashboard: {
 		component: 'Dashboard',
-		url: '/dashboard',
+		url: '/',
 		title: 'Dashboard',
 		icon: 'menu',
 		module: 1
