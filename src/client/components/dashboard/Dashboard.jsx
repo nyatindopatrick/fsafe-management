@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 function Dashboard() {
   return (
@@ -7,33 +7,32 @@ function Dashboard() {
         <i className="fas fa-bars header__menu" />
       </div>
       <main className="main">
-        <div className="main-header">
-          <div className="main-header__heading">Hello User</div>
-          <div className="main-header__updates">Recent Items</div>
-        </div>
-        <div className="main-overview">
-          <div className="overviewcard">
-            <div className="overviewcard__icon">Overview</div>
-            <div className="overviewcard__info">Card</div>
+          <div className="row">
+            <div className="col-sm">
+              <div className="main-overview">
+                <div className="overviewcard">
+                  <div className="overviewcard__icon">Total Sacco</div>
+                  <div className="overviewcard__info">246</div>
+                </div>
+                <div className="overviewcard">
+                  <div className="overviewcard__icon">Total Riders</div>
+                  <div className="overviewcard__info">2453</div>
+                </div>
+                <div className="overviewcard">
+                  <div className="overviewcard__icon">SMS Usage</div>
+                  <div className="overviewcard__info">394</div>
+                </div>
+              </div>
+              <div className="card-container">
+                <div className="card">Least reported Saccos</div>
+              </div>
+            </div>
+            <div className="col-md-4">
+              <div className="card-container card-spacing">
+                <div className="card card2">Reports</div>
+              </div>
+            </div>
           </div>
-          <div className="overviewcard">
-            <div className="overviewcard__icon">Overview</div>
-            <div className="overviewcard__info">Card</div>
-          </div>
-          <div className="overviewcard">
-            <div className="overviewcard__icon">Overview</div>
-            <div className="overviewcard__info">Card</div>
-          </div>
-          <div className="overviewcard">
-            <div className="overviewcard__icon">Overview</div>
-            <div className="overviewcard__info">Card</div>
-          </div>
-        </div>
-        <div className="main-cards">
-          <div className="card">Card</div>
-          <div className="card">Card</div>
-          <div className="card">Card</div>
-        </div>
       </main>
       <footer className="footer">
         <div className="footer__copyright">© 2019</div>
