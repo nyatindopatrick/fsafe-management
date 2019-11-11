@@ -11,7 +11,7 @@ const Riders = () => <JumbotronWrapper title="Riders" />;
 const Multistep = () => <JumbotronWrapper title="Multistep" />;
 const Sms = () => <JumbotronWrapper title="Sms" />;
 const Profile = () => <JumbotronWrapper title="Profile" />;
-const Home = () => <JumbotronWrapper title="Home" />;
+const Home = () => <DashboardPage />;
 
 export {
 	AdminOnly,

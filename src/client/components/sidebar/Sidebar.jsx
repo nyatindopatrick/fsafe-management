@@ -1,32 +1,31 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 const Sidebar = () => {
   return (
     <aside className="sidenav">
-      <div className="sidenav__close-icon">
-        <i className="fas fa-times sidenav__brand-close" />
-      </div>
+      <div className="sideHeader">Fika Safe</div>
+      <hr />
       <ul className="sidenav__list">
         <li className="sidenav__list-item">
-          <Link to="/app/dashboard">
+          <NavLink activeClassName="active" to="/app/dashboard">
             <i className="fas fa-chart-bar"></i> Dashboard
-          </Link>
+          </NavLink>
         </li>
         <li className="sidenav__list-item">
-          <Link to="/sacco">
+          <NavLink activeClassName="active" to="/app/sacco">
             <i className="fas fa-users"></i> Sacco
-          </Link>
+          </NavLink>
         </li>
         <li className="sidenav__list-item">
-          <Link to="/riders">
+          <NavLink activeClassName="active" to="/app/riders">
             <i className="fas fa-user"></i> Riders
-          </Link>
+          </NavLink>
         </li>
         <li className="sidenav__list-item">
-          <Link to="/messages">
+          <NavLink activeClassName="active" to="/app/messages">
             <i className="fas fa-envelope"></i> Messages
-          </Link>
+          </NavLink>
         </li>
       </ul>
     </aside>
