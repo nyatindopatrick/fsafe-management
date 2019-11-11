@@ -1,5 +1,6 @@
 import React from "react";
-import Graph from './graph'
+import Graph from "./graph";
+import { greenChart, purpleChart, blueBar } from "../Icons";
 
 function Dashboard() {
   return (
@@ -11,18 +12,18 @@ function Dashboard() {
         <div className="row">
           <div className="col-sm">
             <div className="main-overview">
-              <div className="card " style={{ maxWidth: "18rem" }}>
+              <div className="card " style={{ maxWidth: "14rem" }}>
                 <p>Total Sacco</p>
                 <div className="row">
                   <div className="col-6">
                     <h5>246</h5>
                   </div>
                   <div className="col-6">
-                    <img src="https://svgshare.com/i/G2T.svg" alt="..." />
+                    <img src={blueBar} alt="..." />
                   </div>
                 </div>
               </div>
-              <div className="card " style={{ maxWidth: "18rem" }}>
+              <div className="card " style={{ maxWidth: "14rem" }}>
                 <p>Total Riders</p>
                 <div className="row">
                   <div className="col-6">
@@ -30,29 +31,29 @@ function Dashboard() {
                     <h5>2453</h5>
                   </div>
                   <div className="col-6">
-                    <img src="https://svgshare.com/i/G1v.svg" alt="..." />
+                    <img src={purpleChart} alt="..." />
                   </div>
                 </div>
                 <div className="bg-transparent "></div>
               </div>
-              <div className="card " style={{ maxWidth: "18rem" }}>
+              <div className="card " style={{ maxWidth: "14rem" }}>
                 <p>SMS Usage</p>
                 <div className="row">
                   <div className="col-6">
                     <h5>394</h5>
                   </div>
                   <div className="col-6">
-                    <img src="https://svgshare.com/i/G1C.svg" alt="..." />
+                    <img src={greenChart} alt="..." />
                   </div>
                 </div>
               </div>
             </div>
             <div className="card-container">
               <div className="bodycard">
-              <h5>Least reported Saccos</h5>
-              <div>
-              <Graph />
-              </div>
+                <h5>Least reported Saccos</h5>
+                <div>
+                  <Graph />
+                </div>
               </div>
             </div>
           </div>
