@@ -221,7 +221,77 @@ margin: 20px
   padding: 0 16px;
   background-color: #f0f0f7;
 }
+/* ----------------------------------------------Header -------------------------------------------- */
+.dropdown_container{
+  border: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.253);
+  justify-content: space-around;
+  float: center;
+  font-family: 'Source Sans Pro';
+  color:rgba(0, 0, 0, 0.308);
+  font-size: 13px;
+}
+.dropdown_container h6{
+  font-size: 14px;
+}
 
+.dropdown_container hr{
+  margin: 5px;
+}
+.dropdown_container i {
+
+  color:#bcbccb;
+}
+/* -------------------------------------------Notification----------------------------------------  */
+.notification_container{
+  border: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.253);
+  justify-content: space-around;
+  float: center;
+  font-family: 'Source Sans Pro' sans-serif;
+  color:rgba(0, 0, 0, 0.308);
+  font-size: 13px;
+  width: 400px;
+  padding:  15px
+ 
+}
+.notification_container h6{ 
+
+  font-size: 16px;
+}
+.dropdown_container hr{}
+.search-query{
+  font-size: 14px;
+  padding-left:25px;
+}
+.mins-ago{
+  padding-left: 55px;
+  font-size: 12px;
+  margin-top: -5px;
+  color: #808495b6;
+}
+
+.avatar_face {
+  vertical-align: middle;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-bottom: -7px;
+  /* border: 1px solid black; */
+ }
+
+ .view_all{
+   text-decoration: none;
+   font-size: 12px;
+   text-align: center;
+   color: #3B86FF;
+   font-family: 'Source Sans Pro' sans-serif;
+ }
+ .view_all a{
+  text-decoration: none;
+  font-size: 12px;
+  color: #3B86FF
+}
 /* Non-mobile styles, 750px breakpoint */
 @media only screen and (min-width: 46.875em) {
   /* Show the sidenav */
@@ -282,7 +352,11 @@ nav a:hover {
 /* Control the left side */
 .left {
   left: 0;
-  background: url("./road.jpg");
+  background: url("./road.jpg") no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 /* Control the right side */
@@ -388,6 +462,7 @@ nav a:hover {
   position: static;
   list-style: none;
 }
+
 .sidebar a {
   width: 16em;
   list-style: none;
@@ -504,3 +579,117 @@ nav a:hover {
 }
 
 /*-------------------------test-------------------------*/
+.Charts {
+  margin: 0 auto;
+  background-color: #f9f9f9;
+  display: flex;
+  align-items: flex-end;
+  padding: 50px;
+}
+.Charts.horizontal {
+  display: block;
+}
+.Charts.horizontal .Charts--serie {
+  display: block;
+  margin: 0 0 30px 0;
+  border: 0;
+}
+.Charts.horizontal .Charts--serie label {
+  position: relative;
+  top: auto;
+  right: auto;
+  left: 0;
+  bottom: auto;
+  padding: 0 0 10px 0;
+}
+.Charts--serie {
+  height: 100%;
+  margin: 0 30px 0 0;
+  display: inline-block;
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  transform-origin: 0 100%;
+  animation: slideUp .6s;
+  position: relative;
+  border-bottom: 1px solid #c2c2c2;
+}
+.Charts--serie.stacked {
+  display: block;
+}
+.Charts--serie label {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -20px;
+  font-family: Helvetica, sans-serif;
+  font-size: 10px;
+  text-align: center;
+  color: #808080;
+}
+.Charts.horizontal .Charts--item {
+  display: block;
+  border-radius: 0 2px 2px 0;
+  margin: 0 0 5px 0;
+  height: 1em;
+}
+.Charts.horizontal .Charts--item b {
+  position: absolute;
+  right: -20px;
+  top: .3em;
+}
+.Charts--item {
+  background-color: #43A19E;
+  display: inline-block;
+  margin: 0 5px 0 0;
+  flex: 1;
+  transition: height 1s ease-out, width 1s ease-out;
+  position: relative;
+  text-align: center;
+  border-radius: 2px 2px 0 0;
+}
+.Charts--item.layered {
+  position: absolute;
+  left: 5%;
+  right: 5%;
+  bottom: 0;
+  margin: 0;
+}
+.Charts--item.layered b {
+  position: absolute;
+  right: 0;
+}
+.Charts--item.stacked {
+  position: relative;
+  display: block;
+  border-radius: 0;
+}
+.Charts--item b {
+  position: relative;
+  font-family: Helvetica, sans-serif;
+  font-size: 10px;
+  top: -20px;
+  color: #43A19E;
+}
+.Legend--color {
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 2px;
+  width: 16px;
+  height: 16px;
+}
+.Legend--label {
+  display: inline-block;
+  vertical-align: middle;
+  font-family: Helvetica, sans-serif;
+  font-size: 12px;
+  margin: 0 0 0 5px;
+}
+@keyframes slideUp {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}

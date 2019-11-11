@@ -1,5 +1,8 @@
 import React from "react";
+import {Link} from 'react-router-dom'
+import avatar from '../Icons/avator.jpg'
 import history from "../../util/history";
+
 
 const Header = () => {
   const handleLogout = () => {
