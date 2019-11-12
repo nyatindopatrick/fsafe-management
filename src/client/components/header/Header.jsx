@@ -1,59 +1,3 @@
-// import React from "react";
-// import history from "../../util/history";
-
-// const Header = () => {
-//   const handleLogout = () => {
-//     localStorage.removeItem("roles");
-//     history.push("/");
-//   };
-//   return (
-//     <header className="header">
-//       <div className="header__search ">
-//         <i className="fas fa-search icon"></i>
-//         <input type="text" placeholder="Search..." name="search" />
-//       </div>
-//       <div className="header_generic_items">
-//         {/* icon */}
-//         <span className="icon">
-//           <i className="fas fa-comments"></i>
-//         </span>
-//         {/* notification bell */}
-//         <div className="__dropdown">
-//           <span className="icon">
-//             <i className="fas fa-bell"></i>
-//             <input type="text" placeholder="9" className="notify_icon" />
-//           </span>
-//           <div className="dropdown__content">
-//             <p>Hello World!</p>
-//           </div>
-//         </div>
-
-//         {/* username */}
-
-//         <div className="__dropdown">
-//           <span className="user_name">
-//             John Doe
-//             <img
-//               src="../../../../public/assets/images/avator.jpg"
-//               alt="Avatar"
-//               className="avatar_face"
-//             />
-//           </span>
-//           <div className="dropdown__content">
-//             <p>Hello World!</p>
-//           </div>
-//         </div>
-//       </div>
-
-//       {/* <button className="btn btn-primary" onClick={handleLogout}>
-//         Logout
-//       </button> */}
-//     </header>
-//   );
-// };
-
-// export default Header;
-
 import React from "react";
 import { Link } from "react-router-dom";
 import avatar from "../Icons/avator.jpg";
@@ -66,6 +10,7 @@ import {
   Nav,
   Media
 } from "reactstrap";
+
 const Header = () => {
   const handleLogout = () => {
     localStorage.removeItem("roles");
@@ -73,16 +18,32 @@ const Header = () => {
   };
   return (
     <header className="header">
-      <div className="header__search">Search...</div>
+      {/* Search Button */}
+      <div className="header__search ">
+        <i className="fas fa-search icon"></i>
+        <input type="text" placeholder="Search..." name="search" />
+      </div>
+
+      {/* Messages */}
+      <span className="icon">
+        <i className="fas fa-comments"></i>
+      </span>
+
+      {/* notification bell */}
       <Notification />
-      <div className="header__avatar">Your face</div>
+
+      {/* username */}
       <ProfileDropdown logout={handleLogout} />
-      <button className="btn btn-primary" onClick={handleLogout}>
+
+      {/* <button className="btn btn-primary" onClick={handleLogout}>
         Logout
-      </button>
+      </button> */}
     </header>
   );
 };
+
+export default Header;
+
 const ProfileDropdown = ({ logout }) => (
   <Nav className="align-items-center d-none d-md-flex" navbar>
     <UncontrolledDropdown nav>
@@ -132,7 +93,7 @@ const Notification = () => (
         <Media className="align-items-center">
           <span className="icon">
             <i className="fas fa-bell"></i>
-            <input type="text" placeholder="9" className="notify_icon" />
+            <span className="_badge">8</span>
           </span>
         </Media>
       </DropdownToggle>
@@ -180,4 +141,3 @@ const Notification = () => (
     </UncontrolledDropdown>
   </Nav>
 );
-export default Header;
