@@ -1,10 +1,10 @@
-const bcrypt = require("bcrypt");
+const bcrypt = require('bcrypt');
 
-const { Login } = require("../../models/data");
+const { Login, Sacco, Riders } = require('../../models/data');
 
 exports.register = (req, res) => {
   const { name, email, password, phone } = req.body;
-  const role = ["admin"];
+  const role = ['admin'];
   const newAdmin = new Login({
     name,
     email,
