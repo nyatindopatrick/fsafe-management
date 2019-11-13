@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import Graph from "./graph";
-import { greenChart, purpleChart, blueBar } from "../Icons";
+
+import Overview from "../shared/Overview";
 
 function Dashboard() {
+  const [UIData] = useState(UI.overViewHeader);
   return (
     <>
       <div className="menu-icon">
@@ -11,43 +13,7 @@ function Dashboard() {
       <main className="main">
         <div className="row">
           <div className="col-sm">
-            <div className="main-overview">
-              <div className="card " style={{ maxWidth: "14rem" }}>
-                <p>Total Sacco</p>
-                <div className="row">
-                  <div className="col-6">
-                    <h5>246</h5>
-                  </div>
-                  <div className="col-6">
-                    <img src={blueBar} alt="..." />
-                  </div>
-                </div>
-              </div>
-              <div className="card " style={{ maxWidth: "14rem" }}>
-                <p>Total Riders</p>
-                <div className="row">
-                  <div className="col-6">
-                    {" "}
-                    <h5>2453</h5>
-                  </div>
-                  <div className="col-6">
-                    <img src={purpleChart} alt="..." />
-                  </div>
-                </div>
-                <div className="bg-transparent "></div>
-              </div>
-              <div className="card " style={{ maxWidth: "14rem" }}>
-                <p>SMS Usage</p>
-                <div className="row">
-                  <div className="col-6">
-                    <h5>394</h5>
-                  </div>
-                  <div className="col-6">
-                    <img src={greenChart} alt="..." />
-                  </div>
-                </div>
-              </div>
-            </div>
+            <Overview overview={UIData} />
             <div className="card-container">
               <div className="bodycard">
                 <h5>Least reported Saccos</h5>
@@ -73,3 +39,8 @@ function Dashboard() {
 }
 
 export default Dashboard;
+
+// UI specifics
+const UI = {
+  overViewHeader: ["Total Sacco", "Total Riders", "SMS Usage"]
+};
