@@ -3,6 +3,8 @@ import Graph from "./graph";
 
 import Overview from "../shared/Overview";
 
+import { greenChart, purpleChart, blueBar } from "../Icons";
+
 function Dashboard() {
   const [UIData] = useState(UI.overViewHeader);
   return (
@@ -11,23 +13,24 @@ function Dashboard() {
         <i className="fas fa-bars header__menu" />
       </div>
       <main className="main">
-        <div className="row">
-          <div className="col-sm">
-            <Overview overview={UIData} />
-            <div className="card-container">
-              <div className="bodycard">
-                <h5>Least reported Saccos</h5>
-                <div>
+        <Overview overview={UIData} />
+        <div className="card-container">
+          <div className="bodycard">
+            <h5>Least reported Saccos</h5>
+            <div>
+              <div className="row">
+                <div className="col">
+                  <Graph />
+                </div>
+                <div className="col">
                   <Graph />
                 </div>
               </div>
             </div>
           </div>
-          <div className="col-md-4">
-            <div className="card-container card-spacing">
-              <div className="bodycard card2">Reports</div>
-            </div>
-          </div>
+        </div>
+        <div className="card-container card-spacing">
+          <div className="bodycard card2">Reports</div>
         </div>
       </main>
       <footer className="footer">

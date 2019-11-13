@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import Data from "./data.json";
+import React, { useState, useEffect } from 'react';
+import Data from './data.json';
 
 function compareNumbers(a, b) {
   return a - b;
@@ -7,40 +7,37 @@ function compareNumbers(a, b) {
 
 const App = () => {
   const [datas, getData] = useState(null);
+  const [data, setData] = useState([]);
+  const [labels, setLabel] = useState(null);
 
   useEffect(() => {
     populateArray();
-    setInterval(populateArray, 2000);
+    // const refresh = setInterval(populateArray, 2000);
+    // return () => {
+    //   clearInterval(refresh);
+    // };
   }, [datas]);
 
   const populateArray = () => {
+    const arr = [];
+    const reprts = [];
+    Data.map(label => {
+      arr.push(label.sacco);
+      reprts.push(label.reports);
+    });
     getData(Data);
+    setLabel(arr);
+    setData(reprts);
   };
 
   const series = [];
-  const labels = () => {
-    const arr = [];
-    datas &&
-      datas.map(label => {
-        arr.push(label.sacco);
-      });
-    return arr;
-  };
-  console.log(labels());
-  const colors = ["#43A19E", "#7B43A1", "#F2317A", "#FF9824", "#58CF6C"];
-  const data = () => {
-    const dataList = [];
-    datas &&
-      datas.map(item => {
-        dataList.push(item.reports);
-      });
-    return dataList;
-  };
 
+  console.log(labels);
+  const colors = ['#43A19E', '#7B43A1', '#F2317A', '#FF9824', '#58CF6C'];
   return (
     <section>
-      <Charts data={[data()]} labels={series} colors={colors} height={250} />
-      <Legend labels={labels()} colors={colors} />
+      <Charts data={[data]} labels={series} colors={colors} horizontal={true} />
+      <Legend labels={labels} colors={colors} />
     </section>
   );
 };
@@ -50,26 +47,27 @@ const Legend = props => {
     colors = props.colors;
 
   return (
-    <div className="Legend">
-      {labels.map(function(label, labelIndex) {
-        return (
-          <div>
-            <span
-              className="Legend--color"
-              style={{ backgroundColor: colors[labelIndex % colors.length] }}
-            />
-            <span className="Legend--label">{label}</span>
-          </div>
-        );
-      })}
+    <div className='Legend'>
+      {labels &&
+        labels.map(function(label, labelIndex) {
+          return (
+            <div>
+              <span
+                className='Legend--color'
+                style={{ backgroundColor: colors[labelIndex % colors.length] }}
+              />
+              <span className='Legend--label'>{label}</span>
+            </div>
+          );
+        })}
     </div>
   );
 };
 
 const Charts = props => {
   const data = props.data;
-  const layered = props.grouping === "layered" ? true : false;
-  const stacked = props.grouping === "stacked" ? true : false;
+  const layered = props.grouping === 'layered' ? true : false;
+  const stacked = props.grouping === 'stacked' ? true : false;
   const opaque = props.opaque;
   let max = 0;
 
@@ -82,7 +80,7 @@ const Charts = props => {
   }
 
   return (
-    <div className={"Charts" + (props.horizontal ? " horizontal" : "")}>
+    <div className={'Charts' + (props.horizontal ? ' horizontal' : '')}>
       {data &&
         data.map(function(serie, serieIndex) {
           var sortedSerie = serie.slice(0),
@@ -95,9 +93,9 @@ const Charts = props => {
 
           return (
             <div
-              className={"Charts--serie " + props.grouping}
+              className={'Charts--serie ' + props.grouping}
               key={serieIndex}
-              style={{ height: props.height ? props.height : "auto" }}
+              style={{ height: props.height ? props.height : 'auto' }}
             >
               <label>{props.labels[serieIndex]}</label>
               {serie.map(function(item, itemIndex) {
@@ -112,22 +110,22 @@ const Charts = props => {
                 };
 
                 if (props.horizontal) {
-                  style["width"] = size + "%";
+                  style['width'] = size + '%';
                 } else {
-                  style["height"] = size + "%";
+                  style['height'] = size + '%';
                 }
 
                 if (layered && !props.horizontal) {
                   //console.log(sortedSerie, serie, sortedSerie.indexOf(item));
-                  style["right"] =
+                  style['right'] =
                     (sortedSerie.indexOf(item) / (serie.length + 1)) * 100 +
-                    "%";
+                    '%';
                   // style['left'] = (itemIndex * 10) + '%';
                 }
 
                 return (
                   <div
-                    className={"Charts--item " + props.grouping}
+                    className={'Charts--item ' + props.grouping}
                     style={style}
                     key={itemIndex}
                   >

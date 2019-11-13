@@ -201,7 +201,6 @@ body {
 .main {
   grid-area: main;
   background-color: #f0f0f7;
-  /* margin-left: 10px; */
 }
 
 .main-header {
@@ -421,7 +420,7 @@ body {
 @media only screen and (min-width: 65.625em) {
   /* Break out main cards into two columns */
   .main-cards {
-    column-count: 2;
+    column-count: 1;
   }
 }
 
@@ -677,13 +676,13 @@ nav a:hover {
   }
 }
 
-/*-------------------------test-------------------------*/
+/*-------------------------Charts-------------------------*/
 .Charts {
   margin: 0 auto;
   background-color: #f9f9f9;
   display: flex;
   align-items: flex-end;
-  padding: 50px;
+  padding: 10px;
 }
 .Charts.horizontal {
   display: block;
@@ -818,12 +817,26 @@ table th,
 table td {
   padding: 0.625em;
   text-align: center;
+  width: auto;
 }
 
 table th {
   font-size: 0.85em;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+}
+
+table td:last-child {
+  border-bottom: 0;
+  padding: 2px;
+  font-size: 0.6em;
+}
+.action_btn {
+  margin: 2px;
+}
+
+.deactivate_activate {
+  width: 110px;
 }
 
 @media screen and (max-width: 600px) {

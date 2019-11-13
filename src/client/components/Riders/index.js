@@ -47,7 +47,8 @@ const riderData = [
     ratings: 4,
     location: "Oginga Street",
     reports: 3,
-    actions: "Deactivate, Delete, Edit "
+    actions: "Deactivate, Delete, Edit ",
+    operationStatus: "Deactivated"
   },
   {
     name: "John Odhiambo",
@@ -55,7 +56,8 @@ const riderData = [
     ratings: 4,
     location: "Oginga Street",
     reports: 3,
-    actions: "Deactivate, Delete, Edit "
+    actions: "Deactivate, Delete, Edit ",
+    operationStatus: "Deactivated"
   },
   {
     name: "John Odhiambo",
@@ -63,7 +65,8 @@ const riderData = [
     ratings: 4,
     location: "Oginga Street",
     reports: 3,
-    actions: "Deactivate, Delete, Edit "
+    actions: "Deactivate, Delete, Edit ",
+    operationStatus: "Active"
   },
   {
     name: "John Odhiambo",
@@ -71,7 +74,8 @@ const riderData = [
     ratings: 4,
     location: "Oginga Street",
     reports: 3,
-    actions: "Deactivate, Delete, Edit "
+    actions: "Deactivate, Delete, Edit ",
+    operationStatus: "Deactivated"
   },
   {
     name: "John Odhiambo",
@@ -79,7 +83,8 @@ const riderData = [
     ratings: 4,
     location: "Oginga Street",
     reports: 3,
-    actions: "Deactivate, Delete, Edit "
+    actions: "Deactivate, Delete, Edit ",
+    operationStatus: "Deactivated"
   },
   {
     name: "John Odhiambo",
@@ -87,14 +92,7 @@ const riderData = [
     ratings: 4,
     location: "Oginga Street",
     reports: 3,
-    actions: "Deactivate, Delete, Edit "
-  },
-  {
-    name: "John Odhiambo",
-    status: "Active",
-    ratings: 4,
-    location: "Oginga Street",
-    reports: 3,
-    actions: "Deactivate, Delete, Edit "
+    actions: "Deactivate, Delete, Edit ",
+    operationStatus: "Active"
   }
 ];

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import { ButtonToggle, Button } from "reactstrap";
 
 const Table = ({ tableHeader, data }) => {
   const [newData, setNewData] = useState(data);
@@ -9,7 +10,7 @@ const Table = ({ tableHeader, data }) => {
   }, [data]);
 
   return (
-    <table>
+    <table className="card-container">
       <thead>
         <tr>
           {tableHeader.map((item, index) => (
@@ -30,7 +31,8 @@ const Table = ({ tableHeader, data }) => {
               ratings,
               location,
               reports,
-              actions
+              actions,
+              operationStatus
             } = items;
             return (
               <tr key={index}>
@@ -39,7 +41,22 @@ const Table = ({ tableHeader, data }) => {
                 <td data-label="Riders">{riders || ratings}</td>
                 <td data-label="Location">{location}</td>
                 <td data-label="Reports">{reports}</td>
-                <td data-label="Actions">{actions}</td>
+                <td data-label="Actions">
+                  <Button
+                    className="deactivate_activate action_btn"
+                    outline
+                    color={operationStatus === "Active" ? "success" : "warning"}
+                  >
+                    {operationStatus}
+                  </Button>
+                  <Button outline color="warning" className=" action_btn">
+                    <i className="fas fa-edit"></i>
+                  </Button>
+
+                  <Button className=" action_btn" outline color="danger">
+                    <i className="fas fa-trash-alt"></i>
+                  </Button>
+                </td>
               </tr>
             );
           })}
