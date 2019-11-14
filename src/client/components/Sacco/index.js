@@ -10,18 +10,16 @@ function SaccoDashBoard() {
 
   return (
     <div className="main">
-      <div className="page-container">
-        <h2>{name}</h2>
-        <Overview overview={UIData} />
+      <h2>{name}</h2>
+      <Overview overview={UIData} />
+      <div className="row  table-utils">
+        <button className="btn btn-info">Add Riders</button>
 
-        <div className="row ">
-          <div className="col-md-8">
-            <button className="btn btn-info">Add Sacco</button>
-          </div>
-          <div className="col-md-4 ">
-            <input type="text" placeholder="Search" />
-          </div>
-        </div>
+        <form>
+          <input type="search" placeholder="Search" />
+        </form>
+      </div>
+      <div className="content-container">
         <Table UI={saccoUI} tableHeader={TableHeader} data={data} />
       </div>
     </div>

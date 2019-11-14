@@ -13,7 +13,7 @@ const Table = ({ tableHeader, data, UI }) => {
   return (
     <table>
       <thead>
-        <tr>
+        <tr style={{ backgroundColor: "#E2E7FF" }}>
           {tableHeader.map((item, index) => (
             <th key={index} scope="col">
               {item}
@@ -46,7 +46,7 @@ const Table = ({ tableHeader, data, UI }) => {
                   <Button
                     className="deactivate_activate action_btn"
                     outline
-                    color={operationStatus === "Active" ? "success" : "warning"}
+                    color={operationStatus === "Active" ? "success" : "danger"}
                   >
                     {operationStatus}
                   </Button>

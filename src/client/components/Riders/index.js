@@ -13,15 +13,17 @@ function RiderPage() {
     <div className="main">
       <h2>Riders</h2>
       <Overview overview={UIData} />
-      <div className="row">
-        <div className="col-md-8">
-          <button className="btn btn-info">Add Riders</button>
-        </div>
-        <div className="col-md-4">
-          <input type="text" placeholder="Search" />
-        </div>
+      {/* the main div  */}
+      <div className="row  table-utils">
+        <button className="btn btn-info">Add Riders</button>
+
+        <form>
+          <input type="search" placeholder="Search" />
+        </form>
       </div>
-      <Table tableHeader={TableHeader} data={data} UI={riderUI} />
+      <div className="content-container">
+        <Table tableHeader={TableHeader} data={data} UI={riderUI} />
+      </div>
     </div>
   );
 }
