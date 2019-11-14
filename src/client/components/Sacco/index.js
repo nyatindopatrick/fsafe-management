@@ -35,7 +35,15 @@ const name = "Sacco";
 const UI = {
   overViewHeader: ["Total Sacco", "Deactivated", "Active"],
   table: {
-    header: ["Sacco", "Status", "Riders", "Location", "Reports", "Actions"]
+    header: [
+      "No.",
+      "Sacco",
+      "Status",
+      "Riders",
+      "Location",
+      "Reports",
+      "Actions"
+    ]
   }
 };
 

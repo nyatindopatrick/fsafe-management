@@ -5,7 +5,6 @@ import EditModal from "../components/Tables/EditModal";
 import SaccoDashBoard from "../components/Sacco/index.js";
 import RiderPage from "../components/Riders";
 // import DashboardPage from "../components/dashboard/Dashboard";
-import Saccotable from "../components/Sacco/saccotable";
 
 // Private routes.
 const AdminOnly = () => <JumbotronWrapper title="Admin Only" />;

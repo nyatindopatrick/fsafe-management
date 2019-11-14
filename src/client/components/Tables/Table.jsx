@@ -36,6 +36,7 @@ const Table = ({ tableHeader, data }) => {
             } = items;
             return (
               <tr key={index}>
+                <td data-label="No.">{index + 1}</td>
                 <td data-label="Sacco">{sacco || name}</td>
                 <td data-label="Status">{status}</td>
                 <td data-label="Riders">{riders || ratings}</td>
