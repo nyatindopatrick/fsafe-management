@@ -5,6 +5,7 @@ import Table from "../Tables/Table";
 function RiderPage() {
   const [UIData] = useState(UI.overViewHeader);
   const [TableHeader] = useState(UI.table.header);
+  const [riderUI] = useState({ ...UI });
 
   const [data, setDate] = useState([...riderData]);
 
@@ -20,7 +21,7 @@ function RiderPage() {
           <input type="text" placeholder="Search" />
         </div>
       </div>
-      <Table tableHeader={TableHeader} data={data} />
+      <Table tableHeader={TableHeader} data={data} UI={riderUI} />
     </div>
   );
 }
@@ -35,7 +36,8 @@ const UI = {
   overViewHeader: ["Total Riders", "Deactivated", "Active"],
   table: {
     header: ["Name", "Status", "Rating", "Location", "Reports", "Actions"]
-  }
+  },
+  modal: "Rider"
 };
 
 // mock Data
