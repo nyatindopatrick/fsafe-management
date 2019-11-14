@@ -144,7 +144,7 @@ const Notification = () => (
           <h6 className="text-overflow m-0">Notifications</h6>
         </DropdownItem>
         <hr />
-        {/* <Link to="admin/admin-profile"> */}
+        {/* <Link to="admin/admin-profile"> */}olor:#707
         <DropdownItem to="/admin/admin-profile" tag={Link}>
           <img className="avatar_face" src={avatar} alt="avatar" />
 
