@@ -31,7 +31,8 @@ const PrivateRoutes = props => {
     <div className="grid-container">
      <Sidebar />
       <Navigation routes={allowedRoutes} path={props.match.path} />
-      <Switch>
+      <div className="main">
+      <Switch >
         {allowedRoutes.map(route => (
           <Route
             exact
@@ -42,6 +43,8 @@ const PrivateRoutes = props => {
         ))}
         <Route component={NotFound} />
       </Switch>
+      </div>
+
     </div>
   );
 };

@@ -5,6 +5,7 @@ import PublicRoutes from "./routes/PublicRoutes";
 import PrivateRoutes from "./routes/PrivateRoutes";
 import history from "./util/history";
 import "../../public/assets/style.css";
+import 'react-widgets/dist/css/react-widgets.css'
 
 const authentication = () =>
   JSON.parse(localStorage.getItem("roles")) ? (
