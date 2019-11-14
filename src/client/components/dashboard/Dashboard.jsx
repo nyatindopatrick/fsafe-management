@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Graph from './graph';
 import Dougnut from './dougnut';
 import Reports from './Reports';
 import { greenChart, purpleChart, blueBar } from '../Icons';
 
 function Dashboard() {
+  const [UIData] = useState(UI.overViewHeader);
   return (
     <>
       <div className='main-overview' align='center'>
@@ -80,3 +81,8 @@ function Dashboard() {
 }
 
 export default Dashboard;
+
+// UI specifics
+const UI = {
+  overViewHeader: ["Total Sacco", "Total Riders", "SMS Usage"]
+};
