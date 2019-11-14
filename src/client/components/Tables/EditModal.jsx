@@ -2,19 +2,19 @@ import React, { useState } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 
 const EditModal = props => {
-  const { buttonLabel, className } = props;
+  const { modalTitle, className } = props;
 
   const [modal, setModal] = useState(false);
 
   const toggle = () => setModal(!modal);
 
   return (
-    <div className="main">
-      <Button color="danger" onClick={toggle}>
-        {buttonLabel}
+    <>
+      <Button outline color="warning" onClick={toggle}>
+        <i className="fas fa-edit"></i>
       </Button>
       <Modal isOpen={modal} toggle={toggle} className={className}>
-        <ModalHeader toggle={toggle}>Modal title</ModalHeader>
+        <ModalHeader toggle={toggle}>Edit {modalTitle}</ModalHeader>
         <ModalBody>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -26,14 +26,14 @@ const EditModal = props => {
         </ModalBody>
         <ModalFooter>
           <Button color="primary" onClick={toggle}>
-            Do Something
+            Submit
           </Button>{" "}
           <Button color="secondary" onClick={toggle}>
             Cancel
           </Button>
         </ModalFooter>
       </Modal>
-    </div>
+    </>
   );
 };
 
