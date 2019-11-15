@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { ButtonToggle, Button } from "reactstrap";
+import EditModal from "./EditModal";
 
-const Table = ({ tableHeader, data }) => {
+const Table = ({ tableHeader, data, UI }) => {
   const [newData, setNewData] = useState(data);
 
   useEffect(() => {
@@ -10,9 +11,9 @@ const Table = ({ tableHeader, data }) => {
   }, [data]);
 
   return (
-    <table className="card-container">
+    <table>
       <thead>
-        <tr>
+        <tr style={{ backgroundColor: "#E2E7FF" }}>
           {tableHeader.map((item, index) => (
             <th key={index} scope="col">
               {item}
@@ -46,13 +47,11 @@ const Table = ({ tableHeader, data }) => {
                   <Button
                     className="deactivate_activate action_btn"
                     outline
-                    color={operationStatus === "Active" ? "success" : "warning"}
+                    color={operationStatus === "Active" ? "success" : "danger"}
                   >
                     {operationStatus}
                   </Button>
-                  <Button outline color="warning" className=" action_btn">
-                    <i className="fas fa-edit"></i>
-                  </Button>
+                  <EditModal modalTitle={UI.modal} />
 
                   <Button className=" action_btn" outline color="danger">
                     <i className="fas fa-trash-alt"></i>
@@ -68,7 +67,9 @@ const Table = ({ tableHeader, data }) => {
 
 Table.propTypes = {
   tableHeader: PropTypes.array.isRequired,
-  data: PropTypes.array.isRequired
+  data: PropTypes.array.isRequired,
+  saccoUI: PropTypes.object,
+  riderUI: PropTypes.object
 };
 
 export default Table;

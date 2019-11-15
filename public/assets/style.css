@@ -201,6 +201,40 @@ body {
 .main {
   grid-area: main;
   background-color: #f0f0f7;
+  display: inline-block;
+}
+
+.main h2 {
+  font-size: 1.6em;
+  font-weight: 20px;
+  margin: 15px;
+  color: #686675;
+}
+
+.table-utils {
+  margin: 0px 15px;
+  /* background-color: #f0f0f7; */
+  padding-bottom: 0;
+  display: flex;
+  flex: wrap;
+  justify-content: space-between;
+}
+
+/* overall container */
+.content-container {
+  margin: 2px 15px;
+  padding-top: 0px;
+  position: relative;
+  background: white;
+  height: auto;
+  border-radius: 5px;
+  width: auto;
+}
+
+.page-container {
+  width: 100%;
+  height: auto;
+  margin: 10px;
 }
 
 .main-header {
@@ -799,7 +833,7 @@ table {
   margin: 0;
   padding: 0;
   width: 100%;
-  table-layout: fixed;
+  table-layout: auto;
 }
 
 table caption {
@@ -817,6 +851,7 @@ table th,
 table td {
   padding: 0.625em;
   text-align: center;
+  width: auto;
 }
 
 table th {
@@ -826,7 +861,9 @@ table th {
 }
 
 table td:last-child {
-  border-bottom: 0;
+  margin: 0px;
+  padding: 0px;
+  /* float: right; */
   padding: 2px;
   font-size: 0.6em;
 }
@@ -839,6 +876,10 @@ table td:last-child {
 }
 
 @media screen and (max-width: 600px) {
+  .table-utils {
+    flex-wrap: wrap;
+  }
+
   table {
     border: 0;
   }
@@ -885,4 +926,54 @@ table td:last-child {
   table td:last-child {
     border-bottom: 0;
   }
+}
+
+/* -----------------Table search bar ----------------------- */
+form input {
+  outline: none;
+  float: right;
+  /* flex: 1; */
+}
+input[type="search"] {
+  -webkit-appearance: textfield;
+  -webkit-box-sizing: content-box;
+  font-family: inherit;
+  font-size: 100%;
+}
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button {
+  display: none;
+}
+
+input[type="search"] {
+  background: #ededed
+    url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat
+    9px center;
+  border: solid 1px #ccc;
+  padding: 9px 10px 9px 32px;
+  width: 150px;
+
+  -webkit-border-radius: 10em;
+  -moz-border-radius: 10em;
+  border-radius: 4px;
+
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+}
+input[type="search"]:focus {
+  width: 180px;
+  background-color: #fff;
+  border-color: #66cc75;
+
+  -webkit-box-shadow: 0 0 5px rgba(109, 207, 246, 0.5);
+  -moz-box-shadow: 0 0 5px rgba(109, 207, 246, 0.5);
+  box-shadow: 0 0 5px rgba(109, 207, 246, 0.5);
+}
+
+input:-moz-placeholder {
+  color: #999;
+}
+input::-webkit-input-placeholder {
+  color: #999;
 }

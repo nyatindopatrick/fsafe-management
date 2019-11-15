@@ -5,24 +5,24 @@ import Table from "../Tables/Table";
 function SaccoDashBoard() {
   const [UIData] = useState(UI.overViewHeader);
   const [TableHeader] = useState(UI.table.header);
-
+  const [saccoUI] = useState({ ...UI });
   const [data, setDate] = useState([...saccoData]);
 
   return (
-    <div className="main">
+    <>
       <h2>{name}</h2>
       <Overview overview={UIData} />
+      <div className="row  table-utils">
+        <button className="btn btn-info">Add Riders</button>
 
-      <div className="row ">
-        <div className="col-md-8">
-          <button className="btn btn-info">Add Sacco</button>
-        </div>
-        <div className="col-md-4 ">
-          <input type="text" placeholder="Search" />
-        </div>
+        <form>
+          <input type="search" placeholder="Search" />
+        </form>
       </div>
-      <Table tableHeader={TableHeader} data={data} />
-    </div>
+      <div className="content-container">
+        <Table UI={saccoUI} tableHeader={TableHeader} data={data} />
+      </div>
+    </>
   );
 }
 
@@ -44,7 +44,8 @@ const UI = {
       "Reports",
       "Actions"
     ]
-  }
+  },
+  modal: "Sacco"
 };
 
 // mock Data
