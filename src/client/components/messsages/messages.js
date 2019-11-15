@@ -3,9 +3,9 @@ import React from 'react';
 class Messages extends React.Component {
    render() {
       return (
-         <div className="main">
+         <div className="main2">
          
-           <div>
+           <div className="">
            <table className="Table">
                <thead>
                   <th>Date<i className="fas fa-sort"></i></th>

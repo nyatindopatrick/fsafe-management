@@ -10,7 +10,7 @@ function RiderPage() {
   const [data, setDate] = useState([...riderData]);
 
   return (
-    <div className="main">
+    <>
       <h2>Riders</h2>
       <Overview overview={UIData} />
       {/* the main div  */}
@@ -24,7 +24,7 @@ function RiderPage() {
       <div className="content-container">
         <Table tableHeader={TableHeader} data={data} UI={riderUI} />
       </div>
-    </div>
+    </>
   );
 }
 
@@ -37,7 +37,15 @@ const name = "Sacco";
 const UI = {
   overViewHeader: ["Total Riders", "Deactivated", "Active"],
   table: {
-    header: ["Name", "Status", "Rating", "Location", "Reports", "Actions"]
+    header: [
+      "No.",
+      "Name",
+      "Status",
+      "Rating",
+      "Location",
+      "Reports",
+      "Actions"
+    ]
   },
   modal: "Rider"
 };
