@@ -8,9 +8,13 @@ class Messages extends React.Component {
            <div className="">
            <table className="Table">
                <thead>
+                  <tr>
                   <th>Date<i className="fas fa-sort"></i></th>
                   <th>Text<i className="fas fa-sort"></i></th>
                   <th>From<i className="fas fa-sort"></i></th>
+                     
+                  </tr>
+                  
                </thead>
                <tbody>
                   <tr>
