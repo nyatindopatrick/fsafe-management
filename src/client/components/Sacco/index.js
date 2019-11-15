@@ -9,7 +9,7 @@ function SaccoDashBoard() {
   const [data, setDate] = useState([...saccoData]);
 
   return (
-    <div className="main">
+    <>
       <h2>{name}</h2>
       <Overview overview={UIData} />
       <div className="row  table-utils">
@@ -22,7 +22,7 @@ function SaccoDashBoard() {
       <div className="content-container">
         <Table UI={saccoUI} tableHeader={TableHeader} data={data} />
       </div>
-    </div>
+    </>
   );
 }
 
@@ -35,7 +35,15 @@ const name = "Sacco";
 const UI = {
   overViewHeader: ["Total Sacco", "Deactivated", "Active"],
   table: {
-    header: ["Sacco", "Status", "Riders", "Location", "Reports", "Actions"]
+    header: [
+      "No.",
+      "Sacco",
+      "Status",
+      "Riders",
+      "Location",
+      "Reports",
+      "Actions"
+    ]
   },
   modal: "Sacco"
 };

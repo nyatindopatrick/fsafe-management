@@ -5,7 +5,7 @@ import { rolesConfig } from "../config/roles";
 import * as Routes from "./index";
 import Navigation from "../components/header/Header";
 import NotFound from "../components/NotFound";
-import Sidebar from '../components/sidebar/Sidebar'
+import Sidebar from "../components/sidebar/Sidebar";
 
 const PrivateRoutes = props => {
   const [allowedRoutes, setAllowed] = useState([]);
@@ -29,22 +29,21 @@ const PrivateRoutes = props => {
 
   return (
     <div className="grid-container">
-     <Sidebar />
+      <Sidebar />
       <Navigation routes={allowedRoutes} path={props.match.path} />
       <div className="main">
-      <Switch >
-        {allowedRoutes.map(route => (
-          <Route
-            exact
-            key={route.url}
-            component={Routes[route.component]}
-            path={`${props.match.path}${route.url}`}
-          />
-        ))}
-        <Route component={NotFound} />
-      </Switch>
+        <Switch>
+          {allowedRoutes.map(route => (
+            <Route
+              exact
+              key={route.url}
+              component={Routes[route.component]}
+              path={`${props.match.path}${route.url}`}
+            />
+          ))}
+          <Route component={NotFound} />
+        </Switch>
       </div>
-
     </div>
   );
 };
