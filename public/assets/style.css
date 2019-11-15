@@ -116,7 +116,7 @@ body {
   text-align: center;
   position: relative;
   top: -9px;
-  left: -6px;
+  left: -6px;width: 60%;
   font-weight: bolder;
   color: white !important;
   padding-top: 1px;
@@ -367,7 +367,7 @@ body {
   color: rgba(0, 0, 0, 0.308);
   font-size: 13px;
   width: 400px;
-  padding: 15px;
+  padding: 15px;width: 60%;
 }
 
 ._badge {
@@ -526,7 +526,7 @@ nav a:hover {
   display: block;
 }
 .loginput:focus {
-  color: #24232e;
+  color: #24232e;width: 60%;
   width: 23em;
 }
 .select {
@@ -767,7 +767,7 @@ nav a:hover {
 }
 .Charts.horizontal .Charts--item b {
   position: absolute;
-  right: -20px;
+    right: -20px;
   top: 0.3em;
 }
 .Charts--item {
@@ -776,7 +776,7 @@ nav a:hover {
   margin: 0 5px 0 0;
   flex: 1;
   transition: height 1s ease-out, width 1s ease-out;
-  position: relative;
+  position: relative;width: 60%;
   text-align: center;
   border-radius: 2px 2px 0 0;
 }
@@ -792,6 +792,7 @@ nav a:hover {
   right: 0;
 }
 .Charts--item.stacked {
+
   position: relative;
   display: block;
   border-radius: 0;
@@ -825,6 +826,59 @@ nav a:hover {
     transform: scaleY(1);
   }
 }
+/* --------------------------messages------------------------ */
+.messages{
+   width: 100%;
+  margin-left: 20px;
+  margin-right: 0px; 
+  
+}
+.td, th{
+  text-align: left;
+  background-color:#D0D5F2;
+  padding: 5px;
+  color:  #707070;
+  font-family: 'Source Sans Pro' sans-serif;
+  
+}
+.td,tr{
+  border: none;
+  font-family: 'Source Sans Pro' sans-serif;
+  color: #707070;
+  text-align: left;
+  background-color:#ffff;
+  padding: 5px;
+  border-bottom: 1px rgba(42, 42, 42, 0.164) solid;
+}
+
+.Table{
+  width: 90%;
+  color:black;
+  margin-top:100px; 
+  margin-left: 50px;
+  margin-right: 50px;
+
+}
+
+.h_search{
+  margin-left: 750px;
+  border: 1px solid black;
+  padding: 4px 2px;
+  width: 200px;
+  border-radius: 7px;
+  } 
+ .m{
+   color: blue;
+  
+ }
+ .download{
+  margin-left: 500px;
+  border: 1px solid black;
+  padding: 2px 1px;
+  width: 130px;
+  border-radius: 7px;
+  background-color: blue;
+ }
 
 /* Tables Header, Rows and data styling */
 table {

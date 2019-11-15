@@ -23,7 +23,7 @@ const Sidebar = () => {
           </NavLink>
         </li>
         <li className="sidenav__list-item">
-          <NavLink activeClassName="active" to="/app/messages">
+          <NavLink activeClassName="active" to="/app/sms">
             <i className="fas fa-envelope"></i> Messages
           </NavLink>
         </li>

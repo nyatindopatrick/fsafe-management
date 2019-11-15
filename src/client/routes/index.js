@@ -4,6 +4,7 @@ import DashboardPage from "../components/dashboard/Dashboard";
 import EditModal from "../components/Tables/EditModal";
 import SaccoDashBoard from "../components/Sacco/index.js";
 import RiderPage from "../components/Riders";
+import Messages from "../components/messsages/messages";
 // import DashboardPage from "../components/dashboard/Dashboard";
 
 // Private routes.
@@ -13,7 +14,7 @@ const Dashboard = () => <DashboardPage />;
 const Sacco = () => <SaccoDashBoard />;
 const Riders = () => <RiderPage />;
 const Multistep = () => <JumbotronWrapper title="Multistep" />;
-const Sms = () => <JumbotronWrapper title="Sms" />;
+const Sms = () => <Messages />;
 const Profile = () => <JumbotronWrapper title="Profile" />;
 const Home = () => <DashboardPage />;
 
