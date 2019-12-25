@@ -1,34 +1,48 @@
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import React from 'react';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import MailIcon from '@material-ui/icons/Mail';
+import ListItemText from '@material-ui/core/ListItemText';
+import Person from '@material-ui/icons/Person';
+import PeopleIcon from '@material-ui/icons/People';
+import BarChartIcon from '@material-ui/icons/BarChart';
+import { Link } from 'react-router-dom';
 
-const Sidebar = () => {
-  return (
-    <aside className="sidenav">
-      <div className="sideHeader">Fika Safe</div>
-      <hr />
-      <ul className="sidenav__list">
-        <li className="sidenav__list-item">
-          <NavLink activeClassName="active" to="/app/dashboard">
-            <i className="fas fa-chart-bar"></i> Dashboard
-          </NavLink>
-        </li>
-        <li className="sidenav__list-item">
-          <NavLink activeClassName="active" to="/app/sacco">
-            <i className="fas fa-users"></i> Sacco
-          </NavLink>
-        </li>
-        <li className="sidenav__list-item">
-          <NavLink activeClassName="active" to="/app/riders">
-            <i className="fas fa-user"></i> Riders
-          </NavLink>
-        </li>
-        <li className="sidenav__list-item">
-          <NavLink activeClassName="active" to="/app/messages">
-            <i className="fas fa-envelope"></i> Messages
-          </NavLink>
-        </li>
-      </ul>
-    </aside>
-  );
-};
-export default Sidebar;
+const mainListItems = (
+  <div className="sideText">
+    <Link to='/app/dashboard'>
+      <ListItem button>
+        <ListItemIcon>
+          <BarChartIcon style={{color: "#ffff"}}/>
+        </ListItemIcon>
+        <ListItemText primary='Dashboard' />
+      </ListItem>
+    </Link>
+    <Link to='/app/sacco'>
+      <ListItem button>
+        <ListItemIcon>
+          <PeopleIcon style={{color: "#ffff"}}/>
+        </ListItemIcon>
+        <ListItemText primary='Sacco' />
+      </ListItem>
+    </Link>
+    <Link to='/app/riders'>
+      <ListItem button>
+        <ListItemIcon>
+          <Person style={{color: "#ffff"}}/>
+        </ListItemIcon >
+        <ListItemText primary='Riders' />
+      </ListItem>
+    </Link>
+    <Link to='/app/sms'>
+      <ListItem button>
+        <ListItemIcon>
+          <MailIcon style={{color: "#ffff"}} />
+        </ListItemIcon >
+        <ListItemText primary='Messages' />
+      </ListItem>
+    </Link>
+  </div>
+);
+
+export default mainListItems;

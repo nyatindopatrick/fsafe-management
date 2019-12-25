@@ -1,6 +1,6 @@
 /* eslint-disable arrow-parens */
 // eslint-disable-next-line quotes
-import { useState } from "react";
+import { useState } from 'react';
 
 export const useSignUpForm = callback => {
   const [inputs, setInputs] = useState({});
@@ -16,10 +16,10 @@ export const useSignUpForm = callback => {
   // handles the change in the form inputs
   const handleInputChange = e => {
     e.persist();
-    setInputs(input => ({
-      ...input,
+    setInputs({
+      ...inputs,
       [e.target.name]: e.target.value
-    }));
+    });
   };
   return {
     handleSubmit,

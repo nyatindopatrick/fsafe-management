@@ -30,6 +30,7 @@ exports.register = (req, res) => {
 
 exports.login = (req, res) => {
   const { email, password } = req.body;
+  console.log(req.body);
   Login.findOne({ email: email }, (err, data) => {
     if (err) throw err;
     bcrypt.compare(password, data.password, function(err, result) {
@@ -38,3 +39,12 @@ exports.login = (req, res) => {
     });
   });
 };
+
+
+exports.dashboard = (req,res)=>{
+  Riders.find({reports:{$lte:10}}, (err, data)=>{
+    if(err) throw err;
+    res.send(data)
+  })
+  
+}

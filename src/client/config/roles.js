@@ -48,6 +48,13 @@ const components = {
 		title: 'Sms',
 		icon: 'menu',
 		module: 1
+	},
+	newSacco:{
+		component: 'NewSacco',
+		url: '/newsacco',
+		title: 'New sacco',
+		icon: 'menu',
+		module: 1
 	}
 };
 
@@ -61,7 +68,7 @@ const modules = {
 };
 
 // component's access to roles.
-const { dashboard, sacco, riders, multistep, sms } = components;
+const { dashboard, sacco, riders, multistep, sms, newSacco } = components;
 const rolesConfig = {
 	admin: {
 		routes: [...Object.values(components)]
