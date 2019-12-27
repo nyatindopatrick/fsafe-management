@@ -12,7 +12,7 @@ const saccoSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  uniqueSaccoCode: {
+  saccoCode: {
     type: String,
     required: true
   },
@@ -28,12 +28,12 @@ const saccoSchema = new mongoose.Schema({
     unique: true
   },
 
-  telephone_number: {
+  phone: {
     type: String,
     required: true,
     unique: true
   },
-  membership: String,
+  location: String,
   date_founded: {
     type: String,
     required: true
@@ -55,7 +55,7 @@ const saccoSchema = new mongoose.Schema({
     type: String,
     requred: true
   },
-  saccoLeaderPhoneNumber: {
+  saccoLeaderPhone: {
     type: String,
     requred: true
   },

@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt');
-
+const sgMail = require('@sendgrid/mail');
+require('dotenv').config();
 const { Login, Sacco, Riders } = require('../../models/data');
 
 exports.register = (req, res) => {
@@ -40,11 +41,121 @@ exports.login = (req, res) => {
   });
 };
 
+exports.dashboard = (req, res) => {
+  Riders.find({ reports: { $lte: 10 } }, (err, data) => {
+    if (err) throw err;
+    res.send(data);
+  });
+};
 
-exports.dashboard = (req,res)=>{
-  Riders.find({reports:{$lte:10}}, (err, data)=>{
-    if(err) throw err;
-    res.send(data)
-  })
-  
-}
+exports.newSacco = (req, res) => {
+  const {
+    name,
+    saccoCode,
+    address,
+    postal_code,
+    registration_number,
+    phone,
+    location,
+    date_founded,
+    description,
+    website,
+    created,
+    saccoleaderFname,
+    saccoleaderLname,
+    saccoleaderPhone,
+    status,
+    email,
+    password
+  } = req.body;
+
+  let errors;
+  if (
+    !name ||
+    !email ||
+    !password ||
+    !address ||
+    !postal_code ||
+    !registration_number ||
+    !phone ||
+    !location||
+    !date_founded ||
+    !website ||
+    !created ||
+    !saccoleaderFname ||
+    !saccoleaderLname ||
+    !saccoleaderPhone
+  ) {
+    errors = 'Please enter all fields';
+  }
+
+  if (!password || password.length < 6) {
+    errors = 'Password must be at least 6 characters';
+  }
+
+  if (errors) {
+    res.send({ err: errors });
+  } else {
+    Sacco.findOne({ email: email }).then(user => {
+      if (user) {
+        errors = 'The Sacco already exists!';
+        res.send(errors);
+      } else {
+        const newUser = new Sacco({
+          name,
+          saccoCode,
+          address,
+          postal_code,
+          registration_number,
+          phone,
+          location,
+          date_founded,
+          description,
+          website,
+          created,
+          saccoleaderFname,
+          saccoleaderLname,
+          saccoleaderPhone,
+          status,
+          email,
+          password
+        });
+
+        //Send email(sendgrid)
+        sgMail.setApiKey(process.env.SG_KEY);
+        const msg = {
+          to: [email],
+          from: 'admin@fikasafe.com',
+          subject: 'Your Fika Safe Logins',
+          html:
+            `<strong>Thank you for registering with Fika Safe. Your login credentials are:<br><br>` +
+            `Email: ${email}<br>Passowrd: ${password}</strong>`
+        };
+        sgMail.send(msg);
+
+        //Hash password
+        bcrypt.genSalt(10, (err, salt) => {
+          bcrypt.hash(newUser.password, salt, (err, hash) => {
+            if (err) throw err;
+            newUser.password = hash;
+            newUser
+              .save()
+              .then(user => {
+                res.status(200).send('Sacco registered Successfully!');
+              })
+              .catch(err => res.send('Internal Server Error!'));
+          });
+        });
+      }
+    });
+  }
+};
+
+exports.saccos = (req, res) => {
+  Sacco.find()
+    .exec()
+    .then(sacco => {
+      return Riders.find().then(rider => res.send({ sacco: sacco, rider: rider }));
+    })
+    .catch(err => console.log(err.msg));
+};

@@ -2,16 +2,25 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { ButtonToggle, Button } from "reactstrap";
 import EditModal from "./EditModal";
+import Loading from '../Loading'
 
 const Table = ({ tableHeader, data, UI }) => {
-  const [newData, setNewData] = useState(data);
+  const [newData, setNewData] = useState();
 
   useEffect(() => {
-    setNewData([...data]);
+    setNewData({...data});
   }, [data]);
-
+console.log(data);
   return (
-    <table>
+    <>
+  {
+    !newData?(
+      <div align='center'>
+      <Loading />
+    </div>
+    ):
+    (
+      <table>
       <thead>
         <tr style={{ backgroundColor: "#E2E7FF" }}>
           {tableHeader.map((item, index) => (
@@ -23,7 +32,7 @@ const Table = ({ tableHeader, data, UI }) => {
       </thead>
       <tbody>
         {newData &&
-          newData.map((items, index) => {
+          newData.sacco.map((items, index) => {
             const {
               sacco,
               name,
@@ -62,12 +71,15 @@ const Table = ({ tableHeader, data, UI }) => {
           })}
       </tbody>
     </table>
+    )
+  }
+   </>
   );
 };
 
 Table.propTypes = {
   tableHeader: PropTypes.array.isRequired,
-  data: PropTypes.array.isRequired,
+  data: PropTypes.object.isRequired,
   saccoUI: PropTypes.object,
   riderUI: PropTypes.object
 };

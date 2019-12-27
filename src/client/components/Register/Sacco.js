@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { useSignUpForm } from '../customHooks';
+import axios from 'axios';
+import Snackbar from '../Snackbar';
 import {
   Col,
   Row,
@@ -11,18 +13,27 @@ import {
   Form,
   FormGroup,
   Label,
-  Input
+  Input,
+  FormText,
+  FormFeedback
 } from 'reactstrap';
 
 const SaccoRegister = () => {
   const { inputs, handleInputChange, handleSubmit } = useSignUpForm(
     handleSignup
   );
+  const [message, setMessage] = useState();
   // all callback funcitons should always be defined using the function keywords arrow funciton wont work
   function handleSignup() {
-    return console.log(inputs);
+    return axios
+      .post('/api/admin/newsacco', inputs)
+      .then(res => {
+        console.log(res);
+        setMessage(res.data);
+      })
+      .catch(err => console.error(err));
   }
-  console.log(inputs);
+
   return (
     <>
       <ReactCSSTransitionGroup
@@ -35,15 +46,19 @@ const SaccoRegister = () => {
       >
         <Card className='main-card mb-3'>
           <CardBody>
-            <CardTitle>New Sacco</CardTitle>
+            <CardTitle align='center'></CardTitle>
+            <Snackbar message={message} />
+            <CardTitle align='center'>New Sacco</CardTitle>
             <Form>
+              <CardTitle>Sacco Info</CardTitle>
+              <hr />
               <Row form>
                 <Col md={6}>
                   <FormGroup>
                     <Label for='exampleEmail11'>Name</Label>
                     <Input
                       type='text'
-                      name='sacco'
+                      name='name'
                       placeholder='Name of sacco'
                       onChange={handleInputChange}
                     />
@@ -51,110 +66,176 @@ const SaccoRegister = () => {
                 </Col>
                 <Col md={6}>
                   <FormGroup>
-                    <Label for='examplePassword11'>Password</Label>
+                    <Label for='examplePassword11'>Email</Label>
+                    <Input
+                      type='email'
+                      name='email'
+                      placeholder='Email'
+                      onChange={handleInputChange}
+                    />
+                  </FormGroup>
+                </Col>
+              </Row>
+
+              <Row form>
+                <Col md={6}>
+                  <FormGroup>
+                    <Label for='exampleCity'>Sacco Code</Label>
+                    <Input
+                      type='text'
+                      name='saccoCode'
+                      onChange={handleInputChange}
+                    />
+                  </FormGroup>
+                </Col>
+                <Col md={4}>
+                  <FormGroup>
+                    <Label for='exampleState'>Registration Number</Label>
+                    <Input
+                      type='text'
+                      name='registration_number'
+                      onChange={handleInputChange}
+                    />
+                  </FormGroup>
+                </Col>
+                <Col md={2}>
+                  <FormGroup>
+                    <Label for='exampleZip'>Location</Label>
+                    <Input
+                      type='text'
+                      name='location'
+                      onChange={handleInputChange}
+                    />
+                  </FormGroup>
+                </Col>
+              </Row>
+
+              <Row form>
+                <Col md={4}>
+                  <FormGroup>
+                    <Label for='exampleCity'>Created</Label>
+                    <Input
+                      type='date'
+                      name='created'
+                      onChange={handleInputChange}
+                    />
+                  </FormGroup>
+                </Col>
+                <Col md={3}>
+                  <FormGroup>
+                    <Label for='date_founded'>Date Founded</Label>
+                    <Input
+                      type='date'
+                      name='date_founded'
+                      onChange={handleInputChange}
+                    />
+                  </FormGroup>
+                </Col>
+                <Col md={5}>
+                  <FormGroup>
+                    <Label for='exampleZip'>Password</Label>
                     <Input
                       type='password'
                       name='password'
-                      id='examplePassword11'
-                      placeholder='password placeholder'
                       onChange={handleInputChange}
                     />
+                    <FormText>Must be at least 6 characters.</FormText>
                   </FormGroup>
                 </Col>
               </Row>
-
               <Row form>
                 <Col md={6}>
                   <FormGroup>
-                    <Label for='exampleCity'>City</Label>
+                    <Label for='exampleCity'>Postal Address</Label>
                     <Input
                       type='text'
-                      name='city'
-                      id='exampleCity'
+                      name='address'
                       onChange={handleInputChange}
                     />
                   </FormGroup>
                 </Col>
                 <Col md={4}>
                   <FormGroup>
-                    <Label for='exampleState'>State</Label>
-                    <Input type='text' name='state' id='exampleState' />
+                    <Label for='exampleState'>Website</Label>
+                    <Input
+                      type='text'
+                      name='website'
+                      onChange={handleInputChange}
+                    />
                   </FormGroup>
                 </Col>
                 <Col md={2}>
                   <FormGroup>
-                    <Label for='exampleZip'>Zip</Label>
-                    <Input type='text' name='zip' id='exampleZip' />
-                  </FormGroup>
-                </Col>
-              </Row>
-
-              <Row form>
-                <Col md={6}>
-                  <FormGroup>
-                    <Label for='exampleCity'>City</Label>
-                    <Input type='text' name='city' id='exampleCity' />
-                  </FormGroup>
-                </Col>
-                <Col md={4}>
-                  <FormGroup>
-                    <Label for='exampleState'>State</Label>
-                    <Input type='text' name='state' id='exampleState' />
-                  </FormGroup>
-                </Col>
-                <Col md={2}>
-                  <FormGroup>
-                    <Label for='exampleZip'>Zip</Label>
-                    <Input type='text' name='zip' id='exampleZip' />
+                    <Label for='exampleZip'>Postal Code</Label>
+                    <Input
+                      type='text'
+                      name='postal_code'
+                      onChange={handleInputChange}
+                    />
                   </FormGroup>
                 </Col>
               </Row>
               <Row form>
-                <Col md={6}>
-                  <FormGroup>
-                    <Label for='exampleCity'>City</Label>
-                    <Input type='text' name='city' id='exampleCity' />
-                  </FormGroup>
-                </Col>
                 <Col md={4}>
                   <FormGroup>
-                    <Label for='exampleState'>State</Label>
-                    <Input type='text' name='state' id='exampleState' />
+                    <Label for='exampleCity'>Phone</Label>
+                    <Input
+                      type='number'
+                      name='phone'
+                      onChange={handleInputChange}
+                    />
                   </FormGroup>
                 </Col>
                 <Col md={2}>
                   <FormGroup>
-                    <Label for='exampleZip'>Zip</Label>
-                    <Input type='text' name='zip' id='exampleZip' />
+                    <Label for='exampleState'>Status</Label>
+                    <Input
+                      type='text'
+                      name='status'
+                      onChange={handleInputChange}
+                    />
                   </FormGroup>
                 </Col>
               </Row>
-
-              <FormGroup className='mb-2 mr-sm-2 mb-sm-0'>
-                <Label for='exampleEmail22' className='mr-sm-2'>
-                  Email
-                </Label>
-                <Input
-                  type='email'
-                  name='email'
-                  id='exampleEmail22'
-                  placeholder='something@idk.cool'
-                />
-              </FormGroup>
-              <FormGroup className='mb-2 mr-sm-2 mb-sm-0'>
-                <Label for='examplePassword22' className='mr-sm-2'>
-                  Password
-                </Label>
-                <Input
-                  type='password'
-                  name='password'
-                  id='examplePassword22'
-                  placeholder="don't tell!"
-                />
-              </FormGroup>
+              <CardTitle>
+                <b>Sacco Leader Details</b>
+              </CardTitle>
+              <hr />
+              <Row form>
+                <Col md={4}>
+                  <FormGroup>
+                    <Label for='exampleCity'>First Name</Label>
+                    <Input
+                      type='text'
+                      name='saccoleaderFname'
+                      onChange={handleInputChange}
+                    />
+                  </FormGroup>
+                </Col>
+                <Col md={4}>
+                  <FormGroup>
+                    <Label for='exampleZip'>Last Name</Label>
+                    <Input
+                      type='text'
+                      name='saccoleaderLname'
+                      onChange={handleInputChange}
+                    />
+                  </FormGroup>
+                </Col>
+                <Col md={4}>
+                  <FormGroup>
+                    <Label for='exampleState'>Phone</Label>
+                    <Input
+                      type='number'
+                      name='saccoleaderPhone'
+                      onChange={handleInputChange}
+                    />
+                  </FormGroup>
+                </Col>
+              </Row>
               <div className='divider' />
-              <Button color='primary' className='mt-2'>
-                Sign in
+              <Button color='primary' onClick={handleSignup} className='mt-2'>
+                Submit
               </Button>
             </Form>
           </CardBody>

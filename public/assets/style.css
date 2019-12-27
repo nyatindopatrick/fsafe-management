@@ -153,8 +153,8 @@ body {
 }
 
 .table-utils {
-  margin: 0px 15px;
   /* background-color: #f0f0f7; */
+  margin-left: 1%;
   padding-bottom: 0;
   display: flex;
   flex: wrap;
@@ -762,4 +762,44 @@ table td:last-child {
 .sideText a {
   color: white !important;
   text-decoration: none;
+}
+.report {
+  padding: 15px;
+  border: 0.5px solid #00000029;
+  border-radius: 10px;
+  margin: 5px;
+}
+.reportrow {
+  padding-left: 25px;
+}
+#overflowTest {
+  background: #ebebed;
+  padding: 15px;
+  overflow-y: scroll;
+  border-radius: 8px;
+}
+.large-2 {
+  overflow-y: scroll;
+}
+
+.force-overflow {
+  min-height: 450px;
+}
+
+.large-2::-webkit-scrollbar-track {
+  border: 1px solid #000;
+  padding: 2px 0;
+  background-color: #ebebed;
+  border-radius: 5px;
+}
+
+.large-2::-webkit-scrollbar {
+  width: 10px;
+}
+
+.large-2::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #dfdfdf;
+  border: 1px solid #000;
 }

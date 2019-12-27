@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 import Dougnut from './dougnut';
 import Reports from './Reports';
-import { greenChart, purpleChart, blueBar } from '../Icons';
+import Loading from '../Loading';
 import { useStyles } from '../Classes/classes';
+import Head from '../Head/DashHead';
 
 function Dashboard() {
   const [UIData] = useState(UI.overViewHeader);
@@ -14,89 +14,7 @@ function Dashboard() {
   return (
     <>
       <div className='content-wrapper'>
-        <div className='row'>
-          <div className='col-md-3 grid-margin stretch-card'>
-            <div className='card'>
-              <div className='card-body'>
-                <p className='card-title text-md-center text-xl-left'>Saccos</p>
-                <div className='d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center'>
-                  <h3 className='mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0'>
-                    340
-                  </h3>
-                  <i className='ti-calendar icon-md text-muted mb-0 mb-md-3 mb-xl-0'></i>
-                </div>
-                <p className='mb-0 mt-2 text-danger'>
-                  100%{' '}
-                  <span className='text-black ml-1'>
-                    <small>(30 days)</small>
-                  </span>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className='col-md-3 grid-margin stretch-card'>
-            <div className='card'>
-              <div className='card-body'>
-                <p className='card-title text-md-center text-xl-left'>Riders</p>
-                <div className='d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center'>
-                  <h3 className='mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0'>
-                    47033
-                  </h3>
-                  <i className='ti-user icon-md text-muted mb-0 mb-md-3 mb-xl-0'></i>
-                </div>
-                <p className='mb-0 mt-2 text-danger'>
-                  100%{' '}
-                  <span className='text-black ml-1'>
-                    <small>(30 days)</small>
-                  </span>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className='col-md-3 grid-margin stretch-card'>
-            <div className='card'>
-              <div className='card-body'>
-                <p className='card-title text-md-center text-xl-left'>
-                  Active saccos
-                </p>
-                <div className='d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center'>
-                  <h3 className='mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0'>
-                    316
-                  </h3>
-                  <i className='ti-agenda icon-md text-muted mb-0 mb-md-3 mb-xl-0'></i>
-                </div>
-                <p className='mb-0 mt-2 text-success'>
-                  92.94%
-                  <span className='text-black ml-1'>
-                    <small>(30 days)</small>
-                  </span>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className='col-md-3 grid-margin stretch-card'>
-            <div className='card'>
-              <div className='card-body'>
-                <p className='card-title text-md-center text-xl-left'>
-                  Active Riders
-                </p>
-                <div className='d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center'>
-                  <h3 className='mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0'>
-                    42033
-                  </h3>
-                  <i className='ti-layers-alt icon-md text-muted mb-0 mb-md-3 mb-xl-0'></i>
-                </div>
-                <p className='mb-0 mt-2 text-success'>
-                  89.37%
-                  <span className='text-black ml-1'>
-                    <small>(30 days)</small>
-                  </span>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
+        <Head info={HeadInfo} />
         <br />
         <Grid item lg={12}>
           <div className='row'>
@@ -160,9 +78,29 @@ function Dashboard() {
             </div>
           </div>
         </Grid>
-        <Grid item lg={12}>
-          <Reports />
-        </Grid>
+
+        <div className='row reportrow'>
+          <div className='col-lg'>
+            <h4>Reports</h4>
+            <div id='overflowTest'>
+              <div class='large-2'>
+                <div class='force-overflow'>
+                  <Reports />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className='col-lg'>
+            <h4>SMS Queries</h4>
+            <div id='overflowTest'>
+              <div class='large-2'>
+                <div class='force-overflow'>
+                  <Reports />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );
@@ -193,3 +131,10 @@ const data = [
     value: 45
   }
 ];
+
+const HeadInfo = {
+  saccos: 340,
+  riders: 47033,
+  activeSaccos: 316,
+  activeRiders: 42033
+};
