@@ -8,7 +8,7 @@ const Table = ({ tableHeader, data, UI }) => {
   const [newData, setNewData] = useState();
 
   useEffect(() => {
-    setNewData({ ...data });
+    setNewData([...data]);
   }, [data]);
   console.log(data);
   return (
@@ -30,7 +30,7 @@ const Table = ({ tableHeader, data, UI }) => {
           </thead>
           <tbody>
             {newData &&
-              newData.sacco.map((items, index) => {
+              newData.map((items, index) => {
                 const {
                   _id,
                   sacco,
@@ -48,13 +48,7 @@ const Table = ({ tableHeader, data, UI }) => {
                     <td data-label='No.'>{index + 1}</td>
                     <td data-label='Sacco'>{sacco || name}</td>
                     <td data-label='Status'>{status}</td>
-                    <td data-label='Riders'>
-                      {
-                        newData.rider.filter(({ sacco }) => {
-                          sacco == _id;
-                        }).length
-                      }
-                    </td>
+                    <td data-label='Riders'>{rating}</td>
                     <td data-label='Location'>{location}</td>
                     <td data-label='Reports'>{reports}</td>
                     <td data-label='Actions'>
@@ -84,7 +78,7 @@ const Table = ({ tableHeader, data, UI }) => {
 
 Table.propTypes = {
   tableHeader: PropTypes.array.isRequired,
-  data: PropTypes.object.isRequired,
+  data: PropTypes.array.isRequired,
   saccoUI: PropTypes.object,
   riderUI: PropTypes.object
 };

@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const loginSchema = new mongoose.Schema({
   email: { type: String, required: true },
@@ -27,7 +27,6 @@ const saccoSchema = new mongoose.Schema({
     required: true,
     unique: true
   },
-
   phone: {
     type: String,
     required: true,
@@ -38,7 +37,6 @@ const saccoSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-
   description: String,
   website: {
     type: String
@@ -61,21 +59,18 @@ const saccoSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    default: "Active"
+    default: 'Active'
   },
   email: {
     type: String,
     required: true,
     unique: true
   },
-  password: { type: String, required: true },
-
   date: {
     type: Date,
     default: Date.now()
   }
 });
-
 
 const riderSchema = new mongoose.Schema(
   {
@@ -176,8 +171,8 @@ const riderSchema = new mongoose.Schema(
       required: true,
       unique: true,
       validate: {
-        validator: text => text.indexOf("K") === 0,
-        message: "Invalid number plate"
+        validator: text => text.indexOf('K') === 0,
+        message: 'Invalid number plate'
       }
     },
     // revisit
@@ -189,22 +184,22 @@ const riderSchema = new mongoose.Schema(
     // react states
     status: {
       type: String,
-      default: "Active"
+      default: 'Active'
     },
     // TODO challenge on how to implement ratings on the riders
     ratings: {
       type: Number,
       min: 0,
-      max: [5, "Number of stars cannot exceed 5"]
+      max: [5, 'Number of stars cannot exceed 5']
     },
-    mysacco:{
-      type:String
+    mysacco: {
+      type: String
     },
 
     // THIS IS WHERE WE REFERENCE THE RIDER TO THEIR RESPECTIVE SACCOS
     sacco: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Sacco"
+      ref: 'Sacco'
     }
   },
   { strict: false }
@@ -225,11 +220,11 @@ const smsSchema = new mongoose.Schema({
   },
   rider: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Rider"
+    ref: 'Rider'
   }
 });
 
-const Login = mongoose.model("Login", loginSchema);
-const Sacco = mongoose.model("Sacco", saccoSchema);
-const Riders = mongoose.model("Riders", riderSchema);
-module.exports = {Login, Sacco, Riders}
+const Login = mongoose.model('Login', loginSchema);
+const Sacco = mongoose.model('Sacco', saccoSchema);
+const Riders = mongoose.model('Riders', riderSchema);
+module.exports = { Login, Sacco, Riders };

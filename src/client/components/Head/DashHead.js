@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 export default function DashHead({ info }) {
-  const { saccos, riders, activeSaccos, activeRiders } = info;
+  const { sacco, rider } = info;
   return (
     <div>
       <div className='row'>
@@ -11,7 +11,7 @@ export default function DashHead({ info }) {
               <p className='card-title text-md-center text-xl-left'>Saccos</p>
               <div className='d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center'>
                 <h3 className='mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0'>
-                  {saccos}
+                  {sacco.length}
                 </h3>
                 <i className='ti-calendar icon-md text-muted mb-0 mb-md-3 mb-xl-0'></i>
               </div>
@@ -25,7 +25,7 @@ export default function DashHead({ info }) {
               <p className='card-title text-md-center text-xl-left'>Riders</p>
               <div className='d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center'>
                 <h3 className='mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0'>
-                  {riders}
+                  {rider.length}
                 </h3>
                 <i className='ti-user icon-md text-muted mb-0 mb-md-3 mb-xl-0'></i>
               </div>
@@ -41,11 +41,15 @@ export default function DashHead({ info }) {
               </p>
               <div className='d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center'>
                 <h3 className='mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0'>
-                  {activeSaccos}
+                  {sacco.filter(({ status }) => status == 'Active').length}
                 </h3>
                 <i className='ti-agenda icon-md text-muted mb-0 mb-md-3 mb-xl-0'></i>
               </div>
-              <p className='mb-0 mt-2 text-success'>92.94%</p>
+              <p className='mb-0 mt-2 text-success'>{`${(sacco.filter(
+                ({ status }) => status == 'Active'
+              ).length >
+                0 / sacco.length) *
+                100}%`}</p>
             </div>
           </div>
         </div>
@@ -57,11 +61,15 @@ export default function DashHead({ info }) {
               </p>
               <div className='d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center'>
                 <h3 className='mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0'>
-                 {activeRiders}
+                  {rider.filter(({ status }) => status == 'Active').length}
                 </h3>
                 <i className='ti-layers-alt icon-md text-muted mb-0 mb-md-3 mb-xl-0'></i>
               </div>
-              <p className='mb-0 mt-2 text-success'>89.37%</p>
+              <p className='mb-0 mt-2 text-success'>{`${(rider.filter(
+                ({ status }) => status == 'Active'
+              ).length >
+                0 / rider.length) *
+                100}%`}</p>
             </div>
           </div>
         </div>

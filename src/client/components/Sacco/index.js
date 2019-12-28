@@ -19,7 +19,7 @@ function SaccoDashBoard() {
       .post('/api/admin/saccos')
       .then(res => {
         console.log(res);
-        setData({...res.data});
+        setData({ ...res.data });
       })
       .catch(err => console.error(err));
   }, []);
@@ -34,7 +34,7 @@ function SaccoDashBoard() {
           </div>
         ) : (
           <div>
-            <Overview overview={UIData} />
+            <Overview overview={UIData} data={data.sacco} />
             <div className='  table-utils'>
               <Link to='/app/newsacco'>
                 <button className='btn btn-info'>Add Sacco</button>
@@ -81,81 +81,3 @@ const UI = {
   },
   modal: 'Sacco'
 };
-
-// mock Data
-
-const saccoData = [
-  {
-    sacco: 'Kisumu Sacco',
-    status: 'Active',
-    riders: 234,
-    location: 'Oginga Street',
-    reports: 3434,
-    actions: 'Deactivate, Delete, Edit ',
-    operationStatus: 'Deactivate'
-  },
-  {
-    sacco: 'Kisumu Sacco',
-    status: 'Active',
-    riders: 234,
-    location: 'Oginga Street',
-    reports: 3434,
-    actions: 'Deactivate, Delete, Edit ',
-    operationStatus: 'Active'
-  },
-
-  {
-    sacco: 'Kisumu Sacco',
-    status: 'Active',
-    riders: 234,
-    location: 'Oginga Street',
-    reports: 3434,
-    actions: 'Deactivate, Delete, Edit ',
-    operationStatus: 'Deactivate'
-  },
-  {
-    sacco: 'Kisumu Sacco',
-    status: 'Active',
-    riders: 234,
-    location: 'Oginga Street',
-    reports: 3434,
-    actions: 'Deactivate, Delete, Edit ',
-    operationStatus: 'Active'
-  },
-  {
-    sacco: 'Kisumu Sacco',
-    status: 'Active',
-    riders: 234,
-    location: 'Oginga Street',
-    reports: 3434,
-    actions: 'Deactivate, Delete, Edit ',
-    operationStatus: 'Deactivate'
-  },
-  {
-    sacco: 'Kisumu Sacco',
-    status: 'Active',
-    riders: 234,
-    location: 'Oginga Street',
-    reports: 3434,
-    actions: 'Deactivate, Delete, Edit ',
-    operationStatus: 'Active'
-  },
-  {
-    sacco: 'Kisumu Sacco',
-    status: 'Active',
-    riders: 234,
-    location: 'Oginga Street',
-    reports: 3434,
-    actions: 'Deactivate, Delete, Edit ',
-    operationStatus: 'Deactivate'
-  },
-  {
-    sacco: 'Kisumu Sacco',
-    status: 'Active',
-    riders: 234,
-    location: 'Oginga Street',
-    reports: 3434,
-    actions: 'Deactivate, Delete, Edit ',
-    operationStatus: 'Active'
-  }
-];

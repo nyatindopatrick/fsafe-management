@@ -3,7 +3,7 @@ import ReactLoading from 'react-loading';
 import { Article } from './generic';
 
 const Loading = () => (
-  <Article>
+  <Article className='loading'>
     <ReactLoading type='bars' color='#248afd' />
   </Article>
 );

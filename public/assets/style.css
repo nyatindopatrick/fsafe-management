@@ -773,10 +773,11 @@ table td:last-child {
   padding-left: 25px;
 }
 #overflowTest {
-  background: #ebebed;
+  background: #f8f8f9;
   padding: 15px;
-  overflow-y: scroll;
-  border-radius: 8px;
+  padding-right: 0;
+  border-radius: 5px;
+  box-shadow: 3px 3px 5px 5px #88888854;
 }
 .large-2 {
   overflow-y: scroll;
@@ -800,6 +801,13 @@ table td:last-child {
 .large-2::-webkit-scrollbar-thumb {
   border-radius: 10px;
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  background-color: #dfdfdf;
   border: 1px solid #000;
+}
+.loading {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
 }

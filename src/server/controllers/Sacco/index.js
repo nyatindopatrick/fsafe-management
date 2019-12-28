@@ -6,3 +6,10 @@ exports.sacco = (req, res) => {
     res.status(200).send(data);
   });
 };
+
+exports.riders = (req, res) => {
+  Riders.find({}, (err, data) => {
+    if (err) console.err(err);
+    res.send(data);
+  });
+};

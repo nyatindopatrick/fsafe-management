@@ -78,7 +78,7 @@ exports.newSacco = (req, res) => {
     !postal_code ||
     !registration_number ||
     !phone ||
-    !location||
+    !location ||
     !date_founded ||
     !website ||
     !created ||
@@ -99,9 +99,9 @@ exports.newSacco = (req, res) => {
     Sacco.findOne({ email: email }).then(user => {
       if (user) {
         errors = 'The Sacco already exists!';
-        res.send(errors);
+        res.send({ err: errors });
       } else {
-        const newUser = new Sacco({
+        const newSacco = new Sacco({
           name,
           saccoCode,
           address,
@@ -117,10 +117,15 @@ exports.newSacco = (req, res) => {
           saccoleaderLname,
           saccoleaderPhone,
           status,
-          email,
-          password
+          email
         });
-
+        const newUser = new Login({
+          password,
+          email,
+          phone,
+          name,
+          role: ['sacco']
+        });
         //Send email(sendgrid)
         sgMail.setApiKey(process.env.SG_KEY);
         const msg = {
@@ -140,10 +145,21 @@ exports.newSacco = (req, res) => {
             newUser.password = hash;
             newUser
               .save()
+              .then(user => console.log('user Added!'))
+              .catch(err => console.error(err));
+            newSacco
+              .save()
               .then(user => {
                 res.status(200).send('Sacco registered Successfully!');
               })
-              .catch(err => res.send('Internal Server Error!'));
+              .catch(err => {
+                console.error(err.stack);
+                res.send(
+                  err.stack.includes('E11000')
+                    ? { err: `Some details match existng Sacco!` }
+                    : { err: 'Internal Server Error!' }
+                );
+              });
           });
         });
       }
@@ -155,7 +171,9 @@ exports.saccos = (req, res) => {
   Sacco.find()
     .exec()
     .then(sacco => {
-      return Riders.find().then(rider => res.send({ sacco: sacco, rider: rider }));
+      return Riders.find().then(rider =>
+        res.send({ sacco: sacco, rider: rider })
+      );
     })
     .catch(err => console.log(err.msg));
 };
