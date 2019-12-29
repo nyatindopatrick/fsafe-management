@@ -1,75 +1,108 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import Avatar from '@material-ui/core/Avatar';
+import Person from '@material-ui/icons/Person';
 import './sms.css';
+import Moment from 'react-moment';
+import ReportsData from '../dashboard/reportdata.json';
 
-export default function Sms() {
-  console.log('Here');
+export default function Sms({ Loading }) {
+  const [sms, setSms] = useState();
+  const [singlesms, setSinglesms] = useState();
+  useEffect(() => {
+    setSms(ReportsData);
+  }, []);
+
   return (
     <>
-      <div className='content-wrapper'>
-        <h3 class=' text-center'>Messages</h3>
-        <div class='messaging'>
-          <div class='inbox_msg'>
-            <div class='inbox_people'>
-              <div class='headind_srch'>
-                <div class='recent_heading'></div>
-                <div class='srch_bar'>
-                  <div class='stylish-input-group'>
-                    <input
-                      type='text'
-                      class='search-bar'
-                      placeholder='Search'
-                    />
-                    <span class='input-group-addon'>
-                      <button type='button'>
+      {!sms ? (
+        <Loading />
+      ) : (
+        <div className='content-wrapper'>
+          <h3 className=' text-center'>Messages</h3>
+          <div className='messaging'>
+            <div className='inbox_msg'>
+              <div className='inbox_people'>
+                <div className='headind_srch'>
+                  <div className='recent_heading'></div>
+                  <div className='srch_bar'>
+                    <div className='stylish-input-group'>
+                      <input
+                        type='text'
+                        className='search-bar'
+                        placeholder='Search'
+                      />
+                      <span className='input-group-addon'>
+                        <button type='button'>
+                          {' '}
+                          <i
+                            className='fa fa-search'
+                            aria-hidden='true'
+                          ></i>{' '}
+                        </button>
+                      </span>{' '}
+                    </div>
+                  </div>
+                </div>
+                <div className='inbox_chat'>
+                  {sms &&
+                    sms.map((item, i) => {
+                      return (
+                        <div
+                          className='chat_list '
+                          key={i}
+                          onClick={() => setSinglesms(item)}
+                        >
+                          <div className='chat_people'>
+                            <div className='chat_img'>
+                              {' '}
+                              <Avatar style={{ background: '#4239bf' }}>
+                                <Person />
+                              </Avatar>
+                            </div>
+                            <div className='chat_ib'>
+                              <h5>
+                                {item.from}{' '}
+                                <span className='chat_date'>
+                                  <Moment fromNow>{item.time}</Moment>
+                                </span>
+                              </h5>
+                              <p>{item.message}</p>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                </div>
+              </div>
+              <div className='mesgs'>
+                {!singlesms ? (
+                  ' '
+                ) : (
+                  <div className='msg_history'>
+                    <div className='incoming_msg'>
+                      <div className='incoming_msg_img'>
                         {' '}
-                        <i class='fa fa-search' aria-hidden='true'></i>{' '}
-                      </button>
-                    </span>{' '}
-                  </div>
-                </div>
-              </div>
-              <div class='inbox_chat'>
-                <div class='chat_list '>
-                  <div class='chat_people'>
-                    <div class='chat_img'>
-                      {' '}
-                      {/* <img
-                        src='https://ptetutorials.com/images/user-profile.png'
-                        alt='sunil'
-                      />{' '} */}
-                    </div>
-                    <div class='chat_ib'>
-                      <h5>
-                        076434521 <span class='chat_date'>12 minutes ago</span>
-                      </h5>
-                      <p>KMEE744N</p>
+                        <Avatar>
+                          <Person />
+                        </Avatar>
+                      </div>
+                      <div className='received_msg'>
+                        <div className='received_withd_msg'>
+                          <p>{singlesms.message}</p>
+                          <span className='time_date'>
+                            {' '}
+                            <Moment fromNow>{singlesms.time}</Moment>
+                          </span>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            </div>
-            <div class='mesgs'>
-              <div class='msg_history'>
-                <div class='incoming_msg'>
-                  <div class='incoming_msg_img'>
-                    {' '}
-                    <img
-                      src='https://ptetutorials.com/images/user-profile.png'
-                      alt='sunil'
-                    />
-                  </div>
-                  <div class='received_msg'>
-                    <div class='received_withd_msg'>
-                      <p>KMEE744N</p>
-                      <span class='time_date'> 11:01 AM | June 9</span>
-                    </div>
-                  </div>
-                </div>
+                )}
               </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
     </>
   );
 }

@@ -33,7 +33,7 @@ const RiderRegister = () => {
       })
       .catch(err => console.error(err));
   }
-
+  console.log(inputs);
   return (
     <>
       <ReactCSSTransitionGroup
@@ -219,12 +219,84 @@ const RiderRegister = () => {
                     />
                   </FormGroup>
                 </Col>
+              </Row>
+              <br />
+              <h5>Bike Details</h5>
+              <hr />
+
+              <Row form>
                 <Col md={4}>
                   <FormGroup>
                     <Label for='exampleState'>Motorbike Make</Label>
                     <Input
                       type='text'
                       name='motorbikeMake'
+                      onChange={handleInputChange}
+                    />
+                  </FormGroup>
+                </Col>
+                <Col md={4}>
+                  <FormGroup>
+                    <Label for='exampleZip'>Motorbike Brand</Label>
+                    <Input
+                      type='text'
+                      name='motorbikeBrand'
+                      onChange={handleInputChange}
+                    />
+                  </FormGroup>
+                </Col>
+                <Col md={4}>
+                  <FormGroup>
+                    <Label for='exampleState'>Motorbike Owner's ID</Label>
+                    <Input
+                      type='number'
+                      name='bikeOwnerID'
+                      onChange={handleInputChange}
+                    />
+                  </FormGroup>
+                </Col>
+              </Row>
+              <Row form>
+                <Col md={4}>
+                  <FormGroup>
+                    <Label for='exampleCity'>
+                      Motorbike Owner's First Name
+                    </Label>
+                    <Input
+                      type='text'
+                      name='bikeOwnerFname'
+                      onChange={handleInputChange}
+                    />
+                  </FormGroup>
+                </Col>
+                <Col md={4}>
+                  <FormGroup>
+                    <Label for='exampleZip'>Motorbike Owner's Last Name</Label>
+                    <Input
+                      type='text'
+                      name='bikeOwnerLname'
+                      onChange={handleInputChange}
+                    />
+                  </FormGroup>
+                </Col>
+                <Col md={4}>
+                  <FormGroup>
+                    <Label for='exampleState'>Motorbike Owner's Phone</Label>
+                    <Input
+                      type='number'
+                      name='bikeOwnerPhone'
+                      onChange={handleInputChange}
+                    />
+                  </FormGroup>
+                </Col>
+              </Row>
+              <Row form>
+                <Col md={4}>
+                  <FormGroup>
+                    <Label for='exampleCity'>Motorbike Owner's Residence</Label>
+                    <Input
+                      type='text'
+                      name='bikeOwnerResidence'
                       onChange={handleInputChange}
                     />
                   </FormGroup>

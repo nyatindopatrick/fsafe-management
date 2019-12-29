@@ -108,8 +108,18 @@ export default function Snackbars({ message }) {
       >
         <MySnackbarContentWrapper
           onClose={handleClose}
-          variant={typeof message == 'object' ? 'error' : 'success'}
-          message={typeof message == 'object' ? message.err : message}
+          variant={
+            typeof message == 'object'
+              ? message.msg
+                ? 'error'
+                : 'warning'
+              : 'success'
+          }
+          message={
+            typeof message == 'object'
+              ? message.err || message.warning
+              : message
+          }
         />
       </Snackbar>
     </div>
