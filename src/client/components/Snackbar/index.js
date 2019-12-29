@@ -110,7 +110,7 @@ export default function Snackbars({ message }) {
           onClose={handleClose}
           variant={
             typeof message == 'object'
-              ? message.msg
+              ? !message.warning
                 ? 'error'
                 : 'warning'
               : 'success'

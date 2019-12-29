@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Person from '@material-ui/icons/Person';
+import axios from 'axios';
 import './sms.css';
 import Moment from 'react-moment';
 import ReportsData from '../dashboard/reportdata.json';
@@ -9,7 +10,12 @@ export default function Sms({ Loading }) {
   const [sms, setSms] = useState();
   const [singlesms, setSinglesms] = useState();
   useEffect(() => {
-    setSms(ReportsData);
+    axios
+      .post('/api/admin/messages')
+      .then(res => {
+        setSms(res.data.reverse());
+      })
+      .catch(err => console.log(err));
   }, []);
 
   return (
@@ -88,7 +94,7 @@ export default function Sms({ Loading }) {
                       </div>
                       <div className='received_msg'>
                         <div className='received_withd_msg'>
-                          <p>{singlesms.message}</p>
+                          <p>{singlesms.text}</p>
                           <span className='time_date'>
                             {' '}
                             <Moment fromNow>{singlesms.time}</Moment>

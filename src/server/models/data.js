@@ -209,14 +209,14 @@ const smsSchema = new mongoose.Schema({
   sacco: {
     type: String
   },
-  txt: {
+  text: {
     type: String
   },
   from: {
     type: Number
   },
   time: {
-    type: String
+    type: Date,
   },
   rider: {
     type: mongoose.Schema.Types.ObjectId,
@@ -227,4 +227,5 @@ const smsSchema = new mongoose.Schema({
 const Login = mongoose.model('Login', loginSchema);
 const Sacco = mongoose.model('Sacco', saccoSchema);
 const Riders = mongoose.model('Riders', riderSchema);
-module.exports = { Login, Sacco, Riders };
+const Messages = mongoose.model('Messages', smsSchema);
+module.exports = { Login, Sacco, Riders, Messages };

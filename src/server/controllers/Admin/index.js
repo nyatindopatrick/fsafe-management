@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt');
 const sgMail = require('@sendgrid/mail');
 require('dotenv').config();
-const { Login, Sacco, Riders } = require('../../models/data');
+const { Login, Sacco, Riders, Messages } = require('../../models/data');
 
 exports.register = (req, res) => {
   const { name, email, password, phone } = req.body;
@@ -176,4 +176,13 @@ exports.saccos = (req, res) => {
       );
     })
     .catch(err => console.log(err.msg));
+};
+
+exports.messages = (req, res) => {
+  Messages.find({}, (err, data) => {
+    if (err) {
+      res.send({ err: 'error getting the messages' });
+    }
+    res.send(data);
+  });
 };
