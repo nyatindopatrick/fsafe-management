@@ -15,7 +15,7 @@ export default function Sms({ Loading }) {
       .post('/api/admin/messages')
       .then(res => {
         setSms(res.data.reverse());
-        setSearch(res.data.reverse());
+        setSearch(res.data);
       })
       .catch(err => console.log(err));
   }, []);
@@ -35,8 +35,6 @@ export default function Sms({ Loading }) {
 
     setSearch(results);
   };
-
-  console.log(search);
   return (
     <>
       {!sms ? (
