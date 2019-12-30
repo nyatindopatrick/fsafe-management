@@ -4,27 +4,55 @@ import Person from '@material-ui/icons/Person';
 import axios from 'axios';
 import './sms.css';
 import Moment from 'react-moment';
-import ReportsData from '../dashboard/reportdata.json';
+import CsvDownload from 'react-json-to-csv';
 
 export default function Sms({ Loading }) {
-  const [sms, setSms] = useState();
+  const [sms, setSms] = useState(null);
   const [singlesms, setSinglesms] = useState();
+  const [search, setSearch] = useState(null);
   useEffect(() => {
     axios
       .post('/api/admin/messages')
       .then(res => {
         setSms(res.data.reverse());
+        setSearch(res.data.reverse());
       })
       .catch(err => console.log(err));
   }, []);
 
+  const handlesearch = e => {
+    const { value } = e.target;
+    let results = [];
+    sms.map(item => {
+      if (
+        Object.values(item)
+          .join('')
+          .includes(value)
+      ) {
+        results.push(item);
+      }
+    });
+
+    setSearch(results);
+  };
+
+  console.log(search);
   return (
     <>
       {!sms ? (
         <Loading />
       ) : (
         <div className='content-wrapper'>
-          <h3 className=' text-center'>Messages</h3>
+          <span>
+            <h3 className=' text-center'>Messages</h3>
+          </span>
+          <CsvDownload
+            className='btn btn-primary'
+            data={sms}
+            filename='messages.csv'
+          >
+            Download csv
+          </CsvDownload>
           <div className='messaging'>
             <div className='inbox_msg'>
               <div className='inbox_people'>
@@ -36,6 +64,7 @@ export default function Sms({ Loading }) {
                         type='text'
                         className='search-bar'
                         placeholder='Search'
+                        onChange={handlesearch}
                       />
                       <span className='input-group-addon'>
                         <button type='button'>
@@ -50,8 +79,8 @@ export default function Sms({ Loading }) {
                   </div>
                 </div>
                 <div className='inbox_chat'>
-                  {sms &&
-                    sms.map((item, i) => {
+                  {search &&
+                    search.map((item, i) => {
                       return (
                         <div
                           className='chat_list '
