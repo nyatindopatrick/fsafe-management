@@ -17,14 +17,12 @@ const authentication = () =>
 const App = () => {
   return (
     <div>
-      <div>
-        <Router history={history}>
-          <Switch>
-            <Route path='/app' component={PrivateRoutes} />
-            <Route path='' render={authentication} />
-          </Switch>
-        </Router>
-      </div>
+      <Router history={history}>
+        <Switch>
+          <Route path='/app' component={PrivateRoutes} />
+          <Route path='' render={authentication} />
+        </Switch>
+      </Router>
     </div>
   );
 };

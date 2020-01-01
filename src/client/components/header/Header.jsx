@@ -1,13 +1,13 @@
 import avatar from '../Icons/avator.jpg';
 import history from '../../util/history';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 import clsx from 'clsx';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
-import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import Badge from '@material-ui/core/Badge';
@@ -154,6 +154,21 @@ const Header = () => {
   // const toggle = () => setIsOpen(!isOpen);
   const classes = useStyles();
   const [open, setOpen] = useState(true);
+  const [datas, getData] = useState(null);
+
+  useEffect(() => {
+    loadData();
+    const renew = setInterval(loadData, 8000);
+    return () => {
+      clearInterval(renew);
+    };
+  }, []);
+  const loadData = () => {
+    axios.post('/api/admin/messages').then(res => {
+      getData(res.data);
+    });
+  };
+
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -197,7 +212,7 @@ const Header = () => {
             />
           </div>
           <div className={classes.title}></div>
-          <Notification />
+          <Notification data={datas} />
           <ProfileDropdown logout={handleLogout} />
         </Toolbar>
       </AppBar>
@@ -209,7 +224,9 @@ const Header = () => {
         open={open}
       >
         <div className={classes.toolbarIcon}>
-          <span style={{paddingRight:"20%", color:"white"}}><strong>FIKA SAFE</strong></span>
+          <span style={{ paddingRight: '20%', color: 'white' }}>
+            <strong>FIKA SAFE</strong>
+          </span>
           <IconButton onClick={handleDrawerClose}>
             <ChevronLeftIcon style={{ color: '#ffff' }} />
           </IconButton>
@@ -259,12 +276,17 @@ const ProfileDropdown = ({ logout }) => (
     </DropdownMenu>
   </UncontrolledDropdown>
 );
-const Notification = () => (
+const Notification = ({ data }) => (
   <>
     <UncontrolledDropdown nav>
       <DropdownToggle className='pr-0' nav>
         <IconButton color='default' style={{ outline: 'none' }}>
-          <Badge badgeContent={4} color='secondary'>
+          <Badge
+            badgeContent={
+              data && data.filter(items => items.action.new == true).length
+            }
+            color='secondary'
+          >
             <NotificationsIcon />
           </Badge>
         </IconButton>

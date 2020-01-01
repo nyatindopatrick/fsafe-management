@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import Container from '@material-ui/core/Container';
 import axios from 'axios';
 import Grid from '@material-ui/core/Grid';
 import Dougnut from './dougnut';
 import Reports from './Reports';
-import Loading from '../Loading';
-import { useStyles } from '../Classes/classes';
 import Head from '../Head/DashHead';
 
 function Dashboard({ Loading }) {
   const [header, setHeader] = useState();
+  const [datas, getData] = useState(null);
+  const [isLoading, setLoading] = useState(false);
+
   useEffect(() => {
     axios
       .post('/api/admin/saccos')
@@ -19,13 +19,26 @@ function Dashboard({ Loading }) {
       .catch(err => console.log(err));
   }, []);
 
+  useEffect(() => {
+    loadData();
+    const renew = setInterval(loadData, 8000);
+    return () => {
+      clearInterval(renew);
+    };
+  }, []);
+  const loadData = () => {
+    axios.post('/api/admin/messages').then(res => {
+      !res.data ? setLoading(true) : getData(res.data);
+    });
+  };
+
   return (
     <>
       {!header ? (
         <div align='center'>{<Loading />}</div>
       ) : (
         <div className='content-wrapper'>
-          <Head info={header} />
+          <Head info={header} data={datas} />
           <br />
           <Grid item lg={12}>
             <div className='row'>
@@ -96,7 +109,7 @@ function Dashboard({ Loading }) {
               <div id='overflowTest'>
                 <div className='large-2'>
                   <div className='force-overflow'>
-                    <Reports />
+                    <Reports data={datas} isLoading={isLoading} />
                   </div>
                 </div>
               </div>
@@ -106,7 +119,7 @@ function Dashboard({ Loading }) {
               <div id='overflowTest'>
                 <div className='large-2'>
                   <div className='force-overflow'>
-                    <Reports />
+                    <Reports data={datas} isLoading={isLoading} />
                   </div>
                 </div>
               </div>

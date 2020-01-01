@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-export default function DashHead({ info }) {
+export default function DashHead({ info, data }) {
   const { sacco, rider } = info;
   return (
     <div>
@@ -45,11 +45,11 @@ export default function DashHead({ info }) {
                 </h3>
                 <i className='ti-agenda icon-md text-muted mb-0 mb-md-3 mb-xl-0'></i>
               </div>
-              <p className='mb-0 mt-2 text-success'>{`${(sacco.filter(
-                ({ status }) => status == 'Active'
-              ).length >
-                0 / sacco.length) *
-                100}%`}</p>
+              <p className='mb-0 mt-2 text-success'>{`${Math.ceil(
+                (sacco.filter(({ status }) => status == 'Active').length /
+                  sacco.length) *
+                  100
+              )}%`}</p>
             </div>
           </div>
         </div>

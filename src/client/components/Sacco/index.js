@@ -7,6 +7,7 @@ import { useStyles } from '../Classes/classes';
 import { Link } from 'react-router-dom';
 import Loading from '../Loading';
 
+
 function SaccoDashBoard() {
   const [UIData] = useState(UI.overViewHeader);
   const [TableHeader] = useState(UI.table.header);
@@ -23,7 +24,8 @@ function SaccoDashBoard() {
       })
       .catch(err => console.error(err));
   }, []);
-  console.log(data);
+
+ 
   return (
     <>
       <div className='content-wrapper'>
@@ -52,6 +54,7 @@ function SaccoDashBoard() {
             </div>
             <div className='content-container'>
               <Table UI={saccoUI} tableHeader={TableHeader} data={data} />
+              
             </div>
           </div>
         )}

@@ -215,8 +215,12 @@ const smsSchema = new mongoose.Schema({
   from: {
     type: Number
   },
+  action: {
+    new: Boolean,
+    read: Boolean
+  },
   time: {
-    type: Date,
+    type: Date
   },
   rider: {
     type: mongoose.Schema.Types.ObjectId,

@@ -46,6 +46,7 @@ router.post('/sms', (req, res) => {
         from: phoneNumber,
         text: text,
         time: new Date(),
+        action: { new: true, read: false },
         sacco: !data ? '' : data.sacco
       });
       newMessage

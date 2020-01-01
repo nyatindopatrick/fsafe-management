@@ -20,9 +20,7 @@ export default function Overview({ overview, data }) {
         <div className='row'>
           <div className='col-6'>
             {' '}
-            <h5>
-              {data.filter(({ status }) => status == 'Deactivated').length}
-            </h5>
+            <h5>{data.filter(({ status }) => status !== 'Active').length}</h5>
           </div>
           <div className='col-6'>
             <img src={purpleChart} alt='...' />
