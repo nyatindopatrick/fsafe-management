@@ -186,3 +186,9 @@ exports.messages = (req, res) => {
     res.send(data);
   });
 };
+
+exports.clearNotifications = (req, res) => {
+  Messages.updateMany({ 'action.new': true }, { 'action.new': false })
+    .then(data => res.send('notifications cleared!'))
+    .catch(err => console.error(err.stack));
+};

@@ -73,7 +73,6 @@ const UI = {
   overViewHeader: ['Total Sacco', 'Deactivated', 'Active'],
   table: {
     header: [
-      'No.',
       'Sacco',
       'Status',
       'Riders',

@@ -158,7 +158,7 @@ const Header = () => {
 
   useEffect(() => {
     loadData();
-    const renew = setInterval(loadData, 8000);
+    const renew = setInterval(loadData, 4000);
     return () => {
       clearInterval(renew);
     };
@@ -276,62 +276,67 @@ const ProfileDropdown = ({ logout }) => (
     </DropdownMenu>
   </UncontrolledDropdown>
 );
-const Notification = ({ data }) => (
-  <>
-    <UncontrolledDropdown nav>
-      <DropdownToggle className='pr-0' nav>
-        <IconButton color='default' style={{ outline: 'none' }}>
-          <Badge
-            badgeContent={
-              data && data.filter(items => items.action.new == true).length
-            }
-            color='secondary'
-          >
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
-      </DropdownToggle>
-      <DropdownMenu
-        className='dropdown-menu-arrow notification_container'
-        right
-      >
-        <DropdownItem className='noti-title' header tag='div'>
-          <h6 className='text-overflow m-0'>Notifications</h6>
-        </DropdownItem>
-        <hr />
-        {/* <Link to="admin/admin-profile"> */}
-        <DropdownItem to='/admin/admin-profile' tag={Link}>
-          <img className='avatar_face' src={avatar} alt='avatar' />
+const Notification = ({ data }) => {
+  const resetNotifications = () => {
+    axios.put('/api/admin/notifications').then(res => close());
+  };
+  return (
+    <>
+      <UncontrolledDropdown nav>
+        <DropdownToggle onClick={resetNotifications} className='pr-0' nav>
+          <IconButton color='default' style={{ outline: 'none' }}>
+            <Badge
+              badgeContent={
+                data && data.filter(items => items.action.new == true).length
+              }
+              color='secondary'
+            >
+              <NotificationsIcon />
+            </Badge>
+          </IconButton>
+        </DropdownToggle>
+        <DropdownMenu
+          className='dropdown-menu-arrow notification_container'
+          right
+        >
+          <DropdownItem className='noti-title' header tag='div'>
+            <h6 className='text-overflow m-0'>Notifications</h6>
+          </DropdownItem>
+          <hr />
+          {/* <Link to="admin/admin-profile"> */}
+          <DropdownItem to='/admin/admin-profile' tag={Link}>
+            <img className='avatar_face' src={avatar} alt='avatar' />
 
-          <span className='search-query'>New search query.</span>
-          <div className='mins-ago'>4 mins ago</div>
-        </DropdownItem>
-        <hr />
-        <DropdownItem to='/admin/admin-profile' tag={Link}>
-          <img className='avatar_face' src={avatar} alt='avatar' />
+            <span className='search-query'>New search query.</span>
+            <div className='mins-ago'>4 mins ago</div>
+          </DropdownItem>
+          <hr />
+          <DropdownItem to='/admin/admin-profile' tag={Link}>
+            <img className='avatar_face' src={avatar} alt='avatar' />
 
-          <span className='search-query'>New search query.</span>
-          <div className='mins-ago'>4 mins ago</div>
-        </DropdownItem>
-        <hr />
-        <DropdownItem to='/admin/admin-profile' tag={Link}>
-          <img className='avatar_face' src={avatar} alt='avatar' />
+            <span className='search-query'>New search query.</span>
+            <div className='mins-ago'>4 mins ago</div>
+          </DropdownItem>
+          <hr />
+          <DropdownItem to='/admin/admin-profile' tag={Link}>
+            <img className='avatar_face' src={avatar} alt='avatar' />
 
-          <span className='search-query'>New search query.</span>
-          <div className='mins-ago'>4 mins ago</div>
-        </DropdownItem>
-        <hr />
-        <DropdownItem to='/admin/admin-profile' tag={Link}>
-          <img className='avatar_face' src={avatar} alt='avatar' />
+            <span className='search-query'>New search query.</span>
+            <div className='mins-ago'>4 mins ago</div>
+          </DropdownItem>
+          <hr />
+          <DropdownItem to='/admin/admin-profile' tag={Link}>
+            <img className='avatar_face' src={avatar} alt='avatar' />
 
-          <span className='search-query'>New search query.</span>
-          <div className='mins-ago'>4 mins ago</div>
-        </DropdownItem>
-        <hr />
-        <div className='view_all'>
-          <Link to='/messages'>View all notifications</Link>
-        </div>
-      </DropdownMenu>
-    </UncontrolledDropdown>
-  </>
-);
+            <span className='search-query'>New search query.</span>
+            <div className='mins-ago'>4 mins ago</div>
+          </DropdownItem>
+          <hr />
+          <div className='view_all'>
+            <Link to='/messages'>View all notifications</Link>
+          </div>
+        </DropdownMenu>
+      </UncontrolledDropdown>
+    </>
+  );
+};
