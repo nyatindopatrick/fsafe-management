@@ -89,7 +89,7 @@ exports.newSacco = (req, res) => {
     errors = 'Please enter all fields';
   }
 
-  if (!password || password.length < 6) {
+  if (password && password.length < 6) {
     errors = 'Password must be at least 6 characters';
   }
 

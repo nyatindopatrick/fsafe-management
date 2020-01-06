@@ -26,14 +26,13 @@ const RiderRegister = () => {
   // all callback funcitons should always be defined using the function keywords arrow funciton wont work
   function handleSignup() {
     return axios
-      .post('/api/admin/newsacco', inputs)
+      .post('/api/sacco/newrider', inputs)
       .then(res => {
-        console.log(res);
         setMessage(res.data);
       })
-      .catch(err => console.error(err));
+      .catch(err => console.error(err.stack));
   }
-  console.log(inputs);
+
   return (
     <>
       <ReactCSSTransitionGroup
@@ -55,7 +54,7 @@ const RiderRegister = () => {
               <Row form>
                 <Col md={6}>
                   <FormGroup>
-                    <Label for='exampleEmail11'>Name</Label>
+                    <Label for='name'>Name</Label>
                     <Input
                       type='text'
                       name='name'
@@ -66,7 +65,7 @@ const RiderRegister = () => {
                 </Col>
                 <Col md={6}>
                   <FormGroup>
-                    <Label for='examplePassword11'>Email</Label>
+                    <Label for='email'>Email</Label>
                     <Input
                       type='email'
                       name='email'
@@ -80,7 +79,7 @@ const RiderRegister = () => {
               <Row form>
                 <Col md={6}>
                   <FormGroup>
-                    <Label for='exampleCity'>Driving License</Label>
+                    <Label for='drivingLicense'>Driving License</Label>
                     <Input
                       type='text'
                       name='drivingLicense'
@@ -90,7 +89,7 @@ const RiderRegister = () => {
                 </Col>
                 <Col md={4}>
                   <FormGroup>
-                    <Label for='exampleState'>Driving License Issue Date</Label>
+                    <Label for='dlIssueDate'>Driving License Issue Date</Label>
                     <Input
                       type='date'
                       name='dlIssueDate'
@@ -100,7 +99,7 @@ const RiderRegister = () => {
                 </Col>
                 <Col md={2}>
                   <FormGroup>
-                    <Label for='exampleZip'>Driving License Expiry Date</Label>
+                    <Label for='dlExpDate'>Driving License Expiry Date</Label>
                     <Input
                       type='date'
                       name='dlExpDate'
@@ -113,7 +112,7 @@ const RiderRegister = () => {
               <Row form>
                 <Col md={4}>
                   <FormGroup>
-                    <Label for='exampleCity'>Insurance Number</Label>
+                    <Label for='insNumber'>Insurance Number</Label>
                     <Input
                       type='text'
                       name='insNumber'
@@ -123,17 +122,17 @@ const RiderRegister = () => {
                 </Col>
                 <Col md={3}>
                   <FormGroup>
-                    <Label for='date_founded'>Insurance Issue Date</Label>
+                    <Label for='insIssueDate'>Insurance Issue Date</Label>
                     <Input
                       type='date'
-                      name='ins_issue_date'
+                      name='insIssueDate'
                       onChange={handleInputChange}
                     />
                   </FormGroup>
                 </Col>
                 <Col md={5}>
                   <FormGroup>
-                    <Label for='exampleZip'>Plate Number</Label>
+                    <Label for='plateNumber'>Plate Number</Label>
                     <Input
                       type='text'
                       name='plateNumber'
@@ -145,7 +144,7 @@ const RiderRegister = () => {
               <Row form>
                 <Col md={6}>
                   <FormGroup>
-                    <Label for='exampleCity'>ID Number</Label>
+                    <Label for='idNumber'>ID Number</Label>
                     <Input
                       type='number'
                       name='idNumber'
@@ -155,17 +154,19 @@ const RiderRegister = () => {
                 </Col>
                 <Col md={4}>
                   <FormGroup>
-                    <Label for='exampleState'>Status</Label>
+                    <Label for='status'>Status</Label>
                     <Input
                       type='text'
                       name='status'
+                      value="Active"
+                      disabled
                       onChange={handleInputChange}
                     />
                   </FormGroup>
                 </Col>
                 <Col md={2}>
                   <FormGroup>
-                    <Label for='exampleZip'>Sacco</Label>
+                    <Label for='sacco'>Sacco</Label>
                     <Input
                       type='text'
                       name='sacco'
@@ -177,7 +178,7 @@ const RiderRegister = () => {
               <Row form>
                 <Col md={4}>
                   <FormGroup>
-                    <Label for='exampleCity'>Sacco ID</Label>
+                    <Label for='sacoId'>Sacco ID</Label>
                     <Input
                       type='text'
                       name='saccoId'
@@ -187,7 +188,7 @@ const RiderRegister = () => {
                 </Col>
                 <Col md={2}>
                   <FormGroup>
-                    <Label for='exampleState'>Phone</Label>
+                    <Label for='phone'>Phone</Label>
                     <Input
                       type='text'
                       name='phone'
@@ -201,7 +202,7 @@ const RiderRegister = () => {
               <Row form>
                 <Col md={4}>
                   <FormGroup>
-                    <Label for='exampleCity'>Base</Label>
+                    <Label for='base'>Base</Label>
                     <Input
                       type='text'
                       name='base'
@@ -211,7 +212,7 @@ const RiderRegister = () => {
                 </Col>
                 <Col md={4}>
                   <FormGroup>
-                    <Label for='exampleZip'>Residence</Label>
+                    <Label for='residence'>Residence</Label>
                     <Input
                       type='text'
                       name='residence'
@@ -227,7 +228,7 @@ const RiderRegister = () => {
               <Row form>
                 <Col md={4}>
                   <FormGroup>
-                    <Label for='exampleState'>Motorbike Make</Label>
+                    <Label for='motorbikeMake'>Motorbike Make</Label>
                     <Input
                       type='text'
                       name='motorbikeMake'
@@ -237,7 +238,7 @@ const RiderRegister = () => {
                 </Col>
                 <Col md={4}>
                   <FormGroup>
-                    <Label for='exampleZip'>Motorbike Brand</Label>
+                    <Label for='motorbikeBrand'>Motorbike Brand</Label>
                     <Input
                       type='text'
                       name='motorbikeBrand'
@@ -247,7 +248,7 @@ const RiderRegister = () => {
                 </Col>
                 <Col md={4}>
                   <FormGroup>
-                    <Label for='exampleState'>Motorbike Owner's ID</Label>
+                    <Label for='bikeOwnerID'>Motorbike Owner's ID</Label>
                     <Input
                       type='number'
                       name='bikeOwnerID'
@@ -259,7 +260,7 @@ const RiderRegister = () => {
               <Row form>
                 <Col md={4}>
                   <FormGroup>
-                    <Label for='exampleCity'>
+                    <Label for='bikeOwnerFname'>
                       Motorbike Owner's First Name
                     </Label>
                     <Input
@@ -271,7 +272,7 @@ const RiderRegister = () => {
                 </Col>
                 <Col md={4}>
                   <FormGroup>
-                    <Label for='exampleZip'>Motorbike Owner's Last Name</Label>
+                    <Label for='bikeOwnerLname'>Motorbike Owner's Last Name</Label>
                     <Input
                       type='text'
                       name='bikeOwnerLname'
@@ -281,7 +282,7 @@ const RiderRegister = () => {
                 </Col>
                 <Col md={4}>
                   <FormGroup>
-                    <Label for='exampleState'>Motorbike Owner's Phone</Label>
+                    <Label for='bikeOwnerPhone'>Motorbike Owner's Phone</Label>
                     <Input
                       type='number'
                       name='bikeOwnerPhone'
@@ -293,7 +294,7 @@ const RiderRegister = () => {
               <Row form>
                 <Col md={4}>
                   <FormGroup>
-                    <Label for='exampleCity'>Motorbike Owner's Residence</Label>
+                    <Label for='bikeOwnerResidence'>Motorbike Owner's Residence</Label>
                     <Input
                       type='text'
                       name='bikeOwnerResidence'

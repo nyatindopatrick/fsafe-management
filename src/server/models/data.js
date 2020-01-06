@@ -74,19 +74,12 @@ const saccoSchema = new mongoose.Schema({
 
 const riderSchema = new mongoose.Schema(
   {
-    riderFname: {
+   
+    name: {
       type: String,
       required: true
     },
-    riderSurName: {
-      type: String,
-      required: true
-    },
-    riderLname: {
-      type: String,
-      required: true
-    },
-    riderTelNumber: {
+    phone: {
       type: String,
       required: true,
       unique: true
@@ -97,11 +90,11 @@ const riderSchema = new mongoose.Schema(
       unique: true
     },
 
-    DLIssueDate: {
+    dlIssueDate: {
       type: String,
       required: true
     },
-    DLExpDate: {
+    dlExpDate: {
       type: String,
       required: true
     },
@@ -109,16 +102,16 @@ const riderSchema = new mongoose.Schema(
       type: String,
       required: false
     },
-    riderID: {
+    idNumber: {
       type: String,
       required: true,
       unique: true
     },
-    riderBase: {
+    base: {
       type: String,
       required: true
     },
-    riderResidence: {
+    residence: {
       type: String,
       required: true
     },
@@ -138,35 +131,35 @@ const riderSchema = new mongoose.Schema(
       type: Number,
       required: true
     },
-    bikeOwnerTelNumber: {
+    bikeOwnerPhone: {
       type: String,
       required: true
     },
-    motorBikeMake: {
+    motorbikeMake: {
       type: String,
       required: true
     },
-    motorBikeBrand: {
+    motorbikeBrand: {
       type: String,
       required: true
     },
 
-    insuranceNumber: {
+    insNumber: {
       type: String,
       // required: true,
       unique: true
     },
-    insuranceIssueDate: {
+    insIssueDate: {
       type: String,
       required: true
       // default: new Date(),
     },
-    insuranceExpDate: {
+    insExpDate: {
       type: String,
       required: true
       // default: new Date(),
     },
-    numberPlate: {
+    plateNumber: {
       type: String,
       required: true,
       unique: true,

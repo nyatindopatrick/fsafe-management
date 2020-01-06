@@ -9,8 +9,10 @@ const app = express();
 const db = process.env.DB_KEY;
 
 app.use(morgan('dev'));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
 mongoose
   .connect(db, {
     useCreateIndex: true,
